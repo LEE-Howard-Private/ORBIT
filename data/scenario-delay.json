@@ -101,17 +101,20 @@
       {
         "id": "q-sales",
         "role": "Sales",
-        "question": "What revenue is committed to the current launch date?"
+        "question": "What revenue is committed to the current launch date?",
+        "topic": "committed revenue"
       },
       {
         "id": "q-eng",
         "role": "Engineering",
-        "question": "What is the quality risk of shipping now?"
+        "question": "What is the quality risk of shipping now?",
+        "topic": "quality risk"
       },
       {
         "id": "q-finance",
         "role": "Finance",
-        "question": "What is the revenue impact of a three-month delay?"
+        "question": "What is the revenue impact of a three-month delay?",
+        "topic": "revenue impact"
       }
     ],
     "decision": {

@@ -5,6 +5,7 @@ import { LangProvider } from "@/components/LangContext";
 import { Atmosphere } from "@/components/env/Atmosphere";
 import { CommandPalette, type Command } from "@/components/shell/CommandPalette";
 import { FloatingNav } from "@/components/shell/FloatingNav";
+import { Narrator } from "@/components/shell/Narrator";
 import { Rail } from "@/components/shell/Rail";
 import { AnalysisScreen } from "@/components/screens/AnalysisScreen";
 import { AsyncScreen } from "@/components/screens/AsyncScreen";
@@ -15,7 +16,9 @@ import { HomeScreen } from "@/components/screens/HomeScreen";
 import { MontageScreen } from "@/components/screens/MontageScreen";
 import { RoiScreen } from "@/components/screens/RoiScreen";
 import { RouteScreen } from "@/components/screens/RouteScreen";
+import { readDecision } from "@/lib/decision";
 import { emit } from "@/lib/events";
+import { narrate } from "@/lib/narration";
 import { STRINGS, type Lang } from "@/lib/i18n";
 import {
   findScenarioByRequest,
@@ -46,6 +49,7 @@ export default function Page() {
   const [error, setError] = useState<string | null>(null);
   const [liveMode, setLiveMode] = useState<boolean | null>(null);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [narratorOpen, setNarratorOpen] = useState(true);
 
   const script = useMemo(() => buildScript(scenario), [scenario]);
   const totalMs = useMemo(() => scriptDurationMs(script), [script]);
@@ -63,6 +67,8 @@ export default function Page() {
 
   useEffect(() => {
     try {
+      const panel = window.localStorage.getItem("syncless-narrator");
+      if (panel === "closed") setNarratorOpen(false);
       const saved = window.localStorage.getItem("syncless-lang");
       if (saved === "zh" || saved === "en") {
         setLang(saved);
@@ -267,6 +273,25 @@ export default function Page() {
     else if (stage === "brief" && step >= 1) emit("decisionReady", { scenario: scenario.id });
   }, [stage, step, scenario]);
 
+  const toggleNarrator = useCallback(() => {
+    setNarratorOpen((v) => {
+      try {
+        window.localStorage.setItem("syncless-narrator", v ? "closed" : "open");
+      } catch {
+        /* not persisting is harmless */
+      }
+      return !v;
+    });
+  }, []);
+
+  /* ---------- narration, derived from the state machine above ---------- */
+
+  const { engine, cost } = useMemo(() => readDecision(scenario), [scenario]);
+  const narratorLines = useMemo(
+    () => narrate(scenario, stage, step, ui, engine, cost),
+    [scenario, stage, step, ui, engine, cost]
+  );
+
   /* ---------- palette ---------- */
 
   const commands: Command[] = useMemo(() => {
@@ -313,7 +338,11 @@ export default function Page() {
 
   return (
     <LangProvider lang={lang}>
-      <div className="grain relative min-h-screen" data-lang={lang}>
+      <div
+        className="grain relative min-h-screen"
+        data-lang={lang}
+        style={{ ["--narrator-w" as string]: narratorOpen ? "352px" : "0px" } as React.CSSProperties}
+      >
         <Atmosphere intensity={atmosphere} />
 
         <div className="fixed inset-x-0 top-0 z-50 h-px">
@@ -340,7 +369,7 @@ export default function Page() {
           dimmed={playing}
         />
 
-        <main key={stage} className="relative z-10 animate-sweepIn">
+        <main key={stage} className="with-narrator relative z-10 animate-sweepIn">
           {stage === "intro" ? <BeforeScreen scenario={scenario} step={step} /> : null}
           {stage === "montage" ? (
             <MontageScreen
@@ -394,6 +423,13 @@ export default function Page() {
           onPrev={goPrev}
           onNext={goNext}
           hidden={playing || paletteOpen}
+        />
+
+        <Narrator
+          lines={narratorLines}
+          idle={stage === "request" && step === 0 && narratorLines.length === 0}
+          open={narratorOpen}
+          onToggle={toggleNarrator}
         />
 
         <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} commands={commands} />

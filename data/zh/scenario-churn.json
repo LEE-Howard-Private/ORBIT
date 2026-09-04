@@ -90,17 +90,20 @@
       {
         "id": "sys-analytics",
         "role": "Customer Analytics",
-        "question": "上個月的企業客戶流失率是多少？"
+        "question": "上個月的企業客戶流失率是多少？",
+        "topic": "上個月流失率"
       },
       {
         "id": "sys-billing",
         "role": "Billing",
-        "question": "該期間有多少生效中的企業帳戶？"
+        "question": "該期間有多少生效中的企業帳戶？",
+        "topic": "生效帳戶數"
       },
       {
         "id": "sys-crm",
         "role": "CRM",
-        "question": "這個數字背後有異常嗎？"
+        "question": "這個數字背後有異常嗎？",
+        "topic": "是否有異常"
       }
     ],
     "decision": {

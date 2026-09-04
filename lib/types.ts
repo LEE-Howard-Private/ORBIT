@@ -4,6 +4,8 @@ export interface AnalysisQuestion {
   id: string;
   role: string;
   question: string;
+  /** A few words naming what the question is about, for the narrator. */
+  topic?: string;
 }
 
 export interface DecisionField {

@@ -65,6 +65,17 @@ same screens, the same animation, the same numbers. The choice is remembered per
 switching mid-flow keeps you on the same scenario and screen. English is the default; to ship
 Chinese as the default, change the initial `useState<Lang>("en")` in `app/page.tsx`.
 
+## Decision Narrator
+
+A side panel that says, in plain language, what SYNCLESS is doing and why — expanded by default,
+collapsible, and remembered per browser. On narrow screens it becomes a bottom drawer.
+
+It is **derived, never authored**: `lib/narration.ts` is a pure function of the stage machine's
+real position and the engine's real output, so the narrator cannot describe something the product
+is not doing. Every line is templated from scenario data, which is why the three canonical
+scenarios narrate differently without a second script to keep in sync. The panel carries a
+standing note that the data is simulated and no external systems are connected.
+
 ## Decision engine
 
 The model never picks the route. It extracts eight factors from the request; `lib/engine.ts`
@@ -151,7 +162,7 @@ app/
   api/analyze/route.ts  OpenAI-backed live analysis (optional)
 components/
   env/Atmosphere.tsx    The room the product sits in
-  shell/                Floating nav, stage rail, ⌘K palette
+  shell/                Floating nav, stage rail, ⌘K palette, Decision Narrator
   screens/              Before, Montage, Home, Analysis, Route, Async, Brief, Roi, Closing
   ui/                   Composer, Orbit, Meter, Reveal, Stage, Icons
 data/
@@ -163,6 +174,7 @@ lib/
   engine.ts             Factor weights, route scoring, confidence, meeting cost
   decision.ts           The one place the UI asks what the engine decided
   events.ts             Named moments (analysisStarted, routeDetermined, …) for cue hooks
+  narration.ts          The narrator's lines, derived from stage + engine state
   script.ts             Golden Path beat timeline
   stages.ts             Narrative order, rail mapping, per-stage reveal depth
   scenario.ts           Scenario registry

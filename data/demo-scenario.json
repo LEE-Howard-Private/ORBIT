@@ -95,17 +95,20 @@
       {
         "id": "q-marketing",
         "role": "Marketing",
-        "question": "What is the earliest realistic launch date?"
+        "question": "What is the earliest realistic launch date?",
+        "topic": "earliest campaign date"
       },
       {
         "id": "q-product",
         "role": "Product",
-        "question": "Is the product technically ready by October 15?"
+        "question": "Is the product technically ready by October 15?",
+        "topic": "release readiness"
       },
       {
         "id": "q-sales",
         "role": "Sales",
-        "question": "Do any existing customer commitments conflict with October 15?"
+        "question": "Do any existing customer commitments conflict with October 15?",
+        "topic": "customer commitments"
       }
     ],
     "decision": {

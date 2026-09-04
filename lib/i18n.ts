@@ -112,6 +112,39 @@ export interface UIStrings {
     questions: string;
   };
   evidenceNote: string;
+  narrator: {
+    title: string;
+    idle: string;
+    collapse: string;
+    expand: string;
+    demoNote: string;
+    received: string;
+    breaking: string;
+    understanding: string;
+    statusUnderstanding: string;
+    stakeholders: (n: number) => string;
+    noStakeholders: string;
+    checkingInfo: string;
+    infoAvailable: string;
+    evidenceFound: string;
+    sources: (n: number) => string;
+    realtime: string;
+    realtimeNone: string;
+    cost: (amount: string) => string;
+    ready: string;
+    routeWhy: Record<RouteId, string>;
+    meetingReasons: string;
+    meetingPrepared: string;
+    asyncSelected: string;
+    asyncIndependent: string;
+    sent: (n: number) => string;
+    responded: (name: string) => string;
+    conflict: string;
+    enough: string;
+    briefReady: string;
+    approved: (owner: string) => string;
+    saved: (amount: string) => string;
+  };
   closing: { strategic: string };
   palette: {
     placeholder: string;
@@ -258,6 +291,47 @@ const en: UIStrings = {
     questions: "Questions to resolve",
   },
   evidenceNote: "Simulated demo evidence",
+  narrator: {
+    title: "Decision Narrator",
+    idle: "Tell me what you're trying to get done. I'll work out how your team should coordinate.",
+    collapse: "Collapse narrator",
+    expand: "Decision Narrator",
+    demoNote: "Demo data. No external systems are connected.",
+    received: "Request received.",
+    breaking: "I'm breaking it into the information, the people and the decision it requires.",
+    understanding: "First, what actually needs to be decided here.",
+    statusUnderstanding: "Understanding request",
+    stakeholders: (n) => `${n} stakeholders have to contribute to this one.`,
+    noStakeholders: "Nobody has to contribute. This is a lookup, not a decision.",
+    checkingInfo: "Now I'm checking whether what this needs already exists, or has to be collected.",
+    infoAvailable: "Information available",
+    evidenceFound: "Sources checked",
+    sources: (n) => `${n}`,
+    realtime:
+      "This needs human input. The real question is whether that input needs everyone in the room at the same time.",
+    realtimeNone: "No human judgement is required, so there is nothing to coordinate.",
+    cost: (amount) => `The meeting as requested would cost ${amount} of synchronous time.`,
+    ready: "Recommendation ready.",
+    routeWhy: {
+      ai_handles_it:
+        "This doesn't need coordination at all. What it needs already exists, so I can answer it directly.",
+      async_first:
+        "This needs human input, but not a live conversation. I'll collect the missing pieces asynchronously and turn them into one decision.",
+      meeting:
+        "Ambiguity is high and the parties disagree. Real-time discussion will change the outcome here, so a meeting is justified.",
+    },
+    meetingReasons: "Three things pushed this toward a room:",
+    meetingPrepared: "So I've prepared the meeting rather than simply booking one.",
+    asyncSelected: "Instead of scheduling anything, I'm turning the decision into independent questions.",
+    asyncIndependent: "None of them needs another answered first.",
+    sent: (n) => `${n} questions sent.`,
+    responded: (name) => `${name} responded.`,
+    conflict: "Two answers contradict each other. That can't be closed in writing.",
+    enough: "That's enough to synthesize the decision.",
+    briefReady: "Decision brief ready.",
+    approved: (owner) => `Approved. Logged, and ${owner} notified as the owner.`,
+    saved: (amount) => `${amount} of coordination cost avoided.`,
+  },
   closing: { strategic: "Right work. Right people. Right synchronization." },
   palette: {
     placeholder: "What do you want to do?",
@@ -398,6 +472,44 @@ const zh: UIStrings = {
     questions: "要解決的問題",
   },
   evidenceNote: "示範用的模擬依據",
+  narrator: {
+    title: "決策敘事",
+    idle: "告訴我你想完成什麼，我來判斷你的團隊該用哪種方式協調。",
+    collapse: "收起敘事面板",
+    expand: "決策敘事",
+    demoNote: "示範資料，未連接任何外部系統。",
+    received: "收到需求。",
+    breaking: "我把它拆成所需的資訊、需要的人，以及要做的決策。",
+    understanding: "先看這件事真正要決定的是什麼。",
+    statusUnderstanding: "理解需求中",
+    stakeholders: (n) => `這件事需要 ${n} 位關係人提供輸入。`,
+    noStakeholders: "沒有人需要提供輸入。這是查詢，不是決策。",
+    checkingInfo: "接著我確認需要的資訊是已經存在，還是必須去收集。",
+    infoAvailable: "資訊充足度",
+    evidenceFound: "查核來源",
+    sources: (n) => `${n} 個`,
+    realtime: "這件事需要人的輸入。真正的問題是：這些輸入需不需要所有人同時在場。",
+    realtimeNone: "不需要任何人的判斷，因此沒有需要協調的東西。",
+    cost: (amount) => `照原樣開這場會，要花掉 ${amount} 的同步時間。`,
+    ready: "建議已就緒。",
+    routeWhy: {
+      ai_handles_it: "這件事完全不需要協調。它需要的東西都已經存在，我可以直接回答。",
+      async_first:
+        "這件事需要人的輸入，但不需要即時對話。我會用非同步方式收齊缺的部分，再彙整成一個決策。",
+      meeting: "模糊度高，而且各方結論對立。即時討論會改變結果，所以這場會開得有道理。",
+    },
+    meetingReasons: "有三件事把它推向了會議室：",
+    meetingPrepared: "所以我把這場會準備好了，而不是只把它排進行事曆。",
+    asyncSelected: "我不排任何會議，而是把這個決策拆成彼此獨立的提問。",
+    asyncIndependent: "沒有任何一題需要等另一題先有答案。",
+    sent: (n) => `已送出 ${n} 個提問。`,
+    responded: (name) => `${name} 已回覆。`,
+    conflict: "有兩個答案互相矛盾，這無法用書面收斂。",
+    enough: "資訊足夠了，可以彙整成決策。",
+    briefReady: "決策摘要已就緒。",
+    approved: (owner) => `已核准。決策入檔，並已通知 ${owner} 為負責人。`,
+    saved: (amount) => `省下 ${amount} 的協調成本。`,
+  },
   closing: { strategic: "對的工作、對的人、對的同步方式。" },
   palette: {
     placeholder: "你想做什麼？",

@@ -23,7 +23,7 @@ export function Rail({
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 flex justify-center pb-6"
+      className="edge-with-narrator fixed inset-x-0 bottom-0 z-40 flex justify-center pb-6"
       style={{
         opacity: hidden ? 0 : 1,
         transform: hidden ? "translateY(12px)" : "none",

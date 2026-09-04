@@ -166,6 +166,30 @@ body {
   }
 }
 
+/* the narrator claims a column on wide screens; everything else steps aside */
+@media (min-width: 1024px) {
+  .with-narrator {
+    padding-right: var(--narrator-w, 0px);
+    transition: padding-right var(--d-major) var(--ease);
+  }
+  .edge-with-narrator {
+    right: var(--narrator-w, 0px);
+    transition: right var(--d-major) var(--ease);
+  }
+}
+
+/* below that it becomes a bottom sheet */
+@media (max-width: 1023px) {
+  aside.glass {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 52vh;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
 /* film grain — the only decorative layer, and it never moves */
 .grain::after {
   content: "";

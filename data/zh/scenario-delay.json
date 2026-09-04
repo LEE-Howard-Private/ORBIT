@@ -101,17 +101,20 @@
       {
         "id": "q-sales",
         "role": "業務",
-        "question": "目前的上線日期綁定了多少營收承諾？"
+        "question": "目前的上線日期綁定了多少營收承諾？",
+        "topic": "已承諾營收"
       },
       {
         "id": "q-eng",
         "role": "工程",
-        "question": "現在就上線的品質風險是什麼？"
+        "question": "現在就上線的品質風險是什麼？",
+        "topic": "品質風險"
       },
       {
         "id": "q-finance",
         "role": "財務",
-        "question": "延後三個月對營收的影響是什麼？"
+        "question": "延後三個月對營收的影響是什麼？",
+        "topic": "營收影響"
       }
     ],
     "decision": {

@@ -90,17 +90,20 @@
       {
         "id": "sys-analytics",
         "role": "Customer Analytics",
-        "question": "What was enterprise churn last month?"
+        "question": "What was enterprise churn last month?",
+        "topic": "last month's churn"
       },
       {
         "id": "sys-billing",
         "role": "Billing",
-        "question": "How many enterprise accounts were active in the period?"
+        "question": "How many enterprise accounts were active in the period?",
+        "topic": "active accounts"
       },
       {
         "id": "sys-crm",
         "role": "CRM",
-        "question": "Is anything unusual behind that number?"
+        "question": "Is anything unusual behind that number?",
+        "topic": "anything unusual"
       }
     ],
     "decision": {
