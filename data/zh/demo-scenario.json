@@ -1,0 +1,362 @@
+{
+  "id": "q4-launch",
+  "title": "Q4 產品上線對齊",
+  "summary": "三個答案早就存在。這場會開的是排程，不是決策。",
+  "shortRequest": "讓行銷、產品、業務對齊 Q4 上線，決定最終上線日期。",
+  "org": "Northwind Systems · 50 人 SaaS 公司",
+  "requester": {
+    "name": "Elena Mercado",
+    "role": "執行長",
+    "initials": "EM"
+  },
+  "submittedAt": "週一 09:12",
+  "request": "我們需要讓行銷、產品和業務對齊 Q4 上線。我們需要決定最終的上線日期。",
+  "intro": {
+    "headline": "問題不在會議本身。",
+    "subhead": "在於不必要的同步。",
+    "lines": [
+      "一家 50 人的 SaaS 公司正在準備 Q4 上線。執行長只需要敲定一個日期。",
+      "於是這個需求變成一場會議，而這場會議變成三天的協調。",
+      "SYNCLESS 先問一個不同的問題：這件事到底有多少需要所有人坐在同一個房間？"
+    ]
+  },
+  "before": {
+    "chain": [
+      "執行長提出需求",
+      "Slack 上喬時間",
+      "行事曆排程",
+      "邀請 10 個人",
+      "90 分鐘會議",
+      "討論",
+      "決策"
+    ],
+    "cost": [
+      {
+        "label": "參與人數",
+        "value": "10 人"
+      },
+      {
+        "label": "會議長度",
+        "value": "90 分鐘"
+      },
+      {
+        "label": "協調成本",
+        "value": "NT$13,500"
+      },
+      {
+        "label": "決策所需時間",
+        "value": "3 天"
+      }
+    ],
+    "verdict": "七個步驟、三天時間、十份行事曆 — 只為了敲定一個其中三個人早就知道的日期。",
+    "note": "問題不是那 90 分鐘。問題是為了一個其中三個人早就知道的決策，去同步十個人。"
+  },
+  "analysis": {
+    "route": "async_first",
+    "necessity_score": 38,
+    "information_sufficiency": 82,
+    "headline": "這個決策所需的資訊多數已經存在。剩下的不確定性可以用非同步方式解決，不需要即時討論。",
+    "decision_complexity": "Medium",
+    "realtime_discussion": "Low",
+    "stakeholder_conflict": "Low",
+    "information_sources": [
+      {
+        "label": "行銷計畫",
+        "status": "available",
+        "detail": "Q4 campaign 檔期已鎖定"
+      },
+      {
+        "label": "產品路線圖",
+        "status": "available",
+        "detail": "版本里程碑已追蹤到日期"
+      },
+      {
+        "label": "業務承諾",
+        "status": "available",
+        "detail": "企業客戶合約條款在檔"
+      }
+    ],
+    "reasoning": [
+      "所需資訊有 82% 已經存在於行銷計畫、產品路線圖與業務承諾中。",
+      "尚未確認的部分可拆解成 3 個有明確負責人的事實確認，不是取捨辯論。",
+      "利害關係衝突低：沒有任何一方的利益與另一方對立。",
+      "10 人 × 90 分鐘的混合同步時間，協調成本為 NT$13,500。",
+      "以非同步方式收齊三個答案後，只剩 15 分鐘的複核即可確認日期。"
+    ],
+    "estimated_cost": 13500,
+    "cost_basis": "10 人 × 1.5 小時 × NT$900 混合時薪 = NT$13,500",
+    "recommended_participants": [
+      "行銷",
+      "產品",
+      "業務"
+    ],
+    "recommended_duration": 15,
+    "questions": [
+      {
+        "id": "q-marketing",
+        "role": "行銷",
+        "question": "最早可行的上線日期是什麼時候？"
+      },
+      {
+        "id": "q-product",
+        "role": "產品",
+        "question": "產品在 10 月 15 日前技術上準備好了嗎？"
+      },
+      {
+        "id": "q-sales",
+        "role": "業務",
+        "question": "現有的客戶承諾中，有任何與 10 月 15 日衝突的嗎？"
+      }
+    ],
+    "decision": {
+      "title": "Q4 上線決策",
+      "status": "決策已就緒",
+      "recommendation": "確認 10 月 15 日為 Q4 上線日期。行銷與產品都已就緒，業務回報沒有阻擋性的客戶衝突。真正需要的是 15 分鐘的確認複核，而不是 90 分鐘的探索會議。",
+      "launch_date": "10 月 15 日",
+      "product_status": "已就緒",
+      "constraint": "兩家企業客戶需要事前通知",
+      "owner": "產品負責人",
+      "fields": [
+        {
+          "label": "建議日期",
+          "value": "10 月 15 日",
+          "source": "行銷"
+        },
+        {
+          "label": "行銷",
+          "value": "已就緒",
+          "source": "行銷"
+        },
+        {
+          "label": "產品",
+          "value": "已就緒",
+          "source": "產品"
+        },
+        {
+          "label": "業務",
+          "value": "無阻擋性衝突",
+          "source": "業務"
+        },
+        {
+          "label": "決策負責人",
+          "value": "產品負責人",
+          "source": "SYNCLESS"
+        }
+      ],
+      "post_approval": [
+        "決策連同三個來源一併寫入 Q4 上線紀錄",
+        "已通知產品負責人擔任決策負責人",
+        "已為兩家企業客戶安排事前通知",
+        "原本 10 人、90 分鐘的會議需求從未被建立"
+      ]
+    },
+    "confidence": 91
+  },
+  "routes": [
+    {
+      "id": "ai_handles_it",
+      "code": "01",
+      "name": "AI 直接處理",
+      "tagline": "不需要任何人回答",
+      "description": "SYNCLESS 直接從既有系統取得答案並記錄下來。",
+      "rejectedBecause": "有兩項輸入 — 最早可行的上線日期、客戶衝突確認 — 需要有具名的人負責背書。",
+      "signals": [
+        {
+          "label": "是否需要人回答",
+          "value": "需要"
+        },
+        {
+          "label": "是否需要負責人",
+          "value": "需要"
+        },
+        {
+          "label": "適配分數",
+          "value": "12%"
+        }
+      ],
+      "notesTitle": "卡在這裡",
+      "notes": [
+        "最早可行的上線日期 — 屬於行銷判斷，不是既有資料",
+        "客戶衝突 — 屬於業務承諾，需要有人負責"
+      ]
+    },
+    {
+      "id": "async_first",
+      "code": "02",
+      "name": "非同步優先",
+      "tagline": "收集、彙整、決策",
+      "description": "SYNCLESS 向三位負責人提出針對性提問，彙整回覆後草擬決策。",
+      "selectedBecause": "資訊充足度 82%，會議必要性僅 38% — 答案已經存在，需要的是收集而不是辯論。",
+      "signals": [
+        {
+          "label": "關係人數",
+          "value": "3 人"
+        },
+        {
+          "label": "人力時間",
+          "value": "15 分鐘"
+        },
+        {
+          "label": "適配分數",
+          "value": "91%"
+        }
+      ],
+      "notesTitle": "即將派發的提問",
+      "notes": [
+        "行銷 — 最早可行的上線日期？",
+        "產品 — 10 月 15 日前技術就緒？",
+        "業務 — 有無衝突的客戶承諾？"
+      ]
+    },
+    {
+      "id": "meeting",
+      "code": "03",
+      "name": "召開會議",
+      "tagline": "需要即時討論",
+      "description": "當取捨真實存在、關係人立場衝突時，才升級為實體討論。",
+      "rejectedBecause": "會議必要性 38%，利害關係衝突低 — 這裡沒有需要即時爭論的取捨。",
+      "signals": [
+        {
+          "label": "參與人數",
+          "value": "10 人"
+        },
+        {
+          "label": "會議長度",
+          "value": "90 分鐘"
+        },
+        {
+          "label": "適配分數",
+          "value": "38%"
+        }
+      ],
+      "preview": {
+        "participants": [
+          "執行長",
+          "產品負責人",
+          "行銷負責人",
+          "業務副總",
+          "工程主管",
+          "設計主管",
+          "客戶成功",
+          "財務",
+          "營運",
+          "法務"
+        ],
+        "duration": "90 分鐘",
+        "earliestSlot": "最快週四 14:00 — 需 3 天協調",
+        "decisionGoal": "敲定 Q4 最終上線日期。",
+        "cost": 13500
+      }
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "q-marketing",
+      "role": "行銷",
+      "name": "Dana Whitfield",
+      "title": "行銷負責人",
+      "initials": "DW",
+      "question": "最早可行的上線日期是什麼時候？",
+      "answer": "10 月 15 日是最早可行的 campaign 上線日。",
+      "respondedIn": "12 分鐘",
+      "channel": "非同步請求"
+    },
+    {
+      "id": "q-product",
+      "role": "產品",
+      "name": "Marcus Lee",
+      "title": "產品負責人",
+      "initials": "ML",
+      "question": "產品在 10 月 15 日前技術上準備好了嗎？",
+      "answer": "產品進度符合 10 月 15 日的時程。",
+      "respondedIn": "26 分鐘",
+      "channel": "非同步請求"
+    },
+    {
+      "id": "q-sales",
+      "role": "業務",
+      "name": "Priya Raghavan",
+      "title": "業務副總",
+      "initials": "PR",
+      "question": "現有的客戶承諾中，有任何與 10 月 15 日衝突的嗎？",
+      "answer": "有兩家企業客戶需要事前通知，但 10 月 15 日可以接受。",
+      "respondedIn": "41 分鐘",
+      "channel": "非同步請求",
+      "flag": {
+        "kind": "constraint",
+        "label": "偵測到限制條件",
+        "effect": "兩家企業客戶需要提前通知。不是阻擋條件 — 已升格為決策中的後續行動。"
+      }
+    }
+  ],
+  "synthesis": "3 位關係人全數在 41 分鐘內回覆，沒有衝突。浮現一項限制條件並帶入決策：兩家企業客戶需要收到 10 月 15 日的事前通知。",
+  "ledger": [
+    {
+      "label": "發出的行事曆邀請",
+      "value": "0"
+    },
+    {
+      "label": "排定的會議",
+      "value": "0"
+    },
+    {
+      "label": "聯繫的關係人",
+      "value": "3 位"
+    },
+    {
+      "label": "針對性提問",
+      "value": "3 個"
+    },
+    {
+      "label": "偵測到的衝突",
+      "value": "0"
+    },
+    {
+      "label": "全數回覆耗時",
+      "value": "41 分鐘"
+    }
+  ],
+  "routeLocked": {
+    "label": "省下的協調成本",
+    "value": "NT$13,500",
+    "caption": "向 3 位具名關係人發出 3 個針對性提問 · 沒有建立任何行事曆邀請"
+  },
+  "roi": {
+    "headline": "我們把一場 90 分鐘的協調會議，變成 15 分鐘的決策複核。",
+    "rows": [
+      {
+        "metric": "參與人數",
+        "before": "10 人",
+        "after": "3 位關係人"
+      },
+      {
+        "metric": "同步時間",
+        "before": "90 分鐘會議",
+        "after": "15 分鐘複核"
+      },
+      {
+        "metric": "協調過程",
+        "before": "3 天喬時間",
+        "after": "當天完成決策"
+      },
+      {
+        "metric": "協調成本",
+        "before": "NT$13,500",
+        "after": "NT$2,250"
+      }
+    ],
+    "savingLabel": "預估節省",
+    "saving": "NT$11,250",
+    "savingAmount": 11250,
+    "footnote": "同樣的決策、同樣的信心度，只用了一小部分的同步成本。",
+    "transform": {
+      "from": "90 分鐘",
+      "to": "15 分鐘"
+    }
+  },
+  "closing": {
+    "statement": "我們不管理會議。我們消滅那些你的公司從來不需要的會議。",
+    "wordmark": "SYNCLESS",
+    "positioning": "為現代團隊打造的 AI 決策層"
+  }
+}

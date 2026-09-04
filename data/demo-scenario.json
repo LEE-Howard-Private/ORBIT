@@ -1,0 +1,362 @@
+{
+  "id": "q4-launch",
+  "title": "Q4 Product Launch Alignment",
+  "summary": "Three answers already exist. The meeting was scheduling, not deciding.",
+  "shortRequest": "Align Marketing, Product and Sales on our Q4 launch and decide the final launch date.",
+  "org": "Northwind Systems · 50-person SaaS",
+  "requester": {
+    "name": "Elena Mercado",
+    "role": "CEO",
+    "initials": "EM"
+  },
+  "submittedAt": "Mon 09:12",
+  "request": "We need to align Marketing, Product and Sales on our Q4 launch. We need to decide the final launch date.",
+  "intro": {
+    "headline": "Meetings are not the problem.",
+    "subhead": "Unnecessary synchronization is.",
+    "lines": [
+      "A 50-person SaaS company is preparing its Q4 launch. The CEO needs one date agreed.",
+      "So the request becomes a meeting — and the meeting becomes three days of coordination.",
+      "SYNCLESS asks a different question first: how much of this actually needs everyone in a room?"
+    ]
+  },
+  "before": {
+    "chain": [
+      "CEO request",
+      "Slack coordination",
+      "Calendar scheduling",
+      "10 people invited",
+      "90-minute meeting",
+      "Discussion",
+      "Decision"
+    ],
+    "cost": [
+      {
+        "label": "Participants",
+        "value": "10"
+      },
+      {
+        "label": "Meeting length",
+        "value": "90 min"
+      },
+      {
+        "label": "Coordination cost",
+        "value": "NT$13,500"
+      },
+      {
+        "label": "Time to decision",
+        "value": "3 days"
+      }
+    ],
+    "verdict": "Seven steps, three days, ten calendars — to settle one date that three people already knew.",
+    "note": "The problem is not the 90 minutes. The problem is synchronizing ten people to reach a decision three of them already hold."
+  },
+  "analysis": {
+    "route": "async_first",
+    "necessity_score": 38,
+    "information_sufficiency": 82,
+    "headline": "Most of the information required for this decision already exists. The remaining uncertainty can be resolved asynchronously without requiring real-time discussion.",
+    "decision_complexity": "Medium",
+    "realtime_discussion": "Low",
+    "stakeholder_conflict": "Low",
+    "information_sources": [
+      {
+        "label": "Marketing plan",
+        "status": "available",
+        "detail": "Q4 campaign calendar is locked"
+      },
+      {
+        "label": "Product roadmap",
+        "status": "available",
+        "detail": "Release milestones tracked to date"
+      },
+      {
+        "label": "Sales commitments",
+        "status": "available",
+        "detail": "Enterprise contract terms on file"
+      }
+    ],
+    "reasoning": [
+      "82% of the required information already exists in the Marketing plan, Product roadmap and Sales commitments.",
+      "The open question resolves to 3 factual confirmations with named owners — not a trade-off debate.",
+      "Stakeholder conflict is low: no participant has an interest that opposes another's.",
+      "10 participants × 90 minutes of blended synchronous time costs NT$13,500 in coordination.",
+      "Collecting the three answers asynchronously leaves a 15-minute review to confirm the date."
+    ],
+    "estimated_cost": 13500,
+    "cost_basis": "10 participants × 1.5 h × NT$900 blended hourly = NT$13,500",
+    "recommended_participants": [
+      "Marketing",
+      "Product",
+      "Sales"
+    ],
+    "recommended_duration": 15,
+    "questions": [
+      {
+        "id": "q-marketing",
+        "role": "Marketing",
+        "question": "What is the earliest realistic launch date?"
+      },
+      {
+        "id": "q-product",
+        "role": "Product",
+        "question": "Is the product technically ready by October 15?"
+      },
+      {
+        "id": "q-sales",
+        "role": "Sales",
+        "question": "Do any existing customer commitments conflict with October 15?"
+      }
+    ],
+    "decision": {
+      "title": "Q4 Launch Decision",
+      "status": "Decision Ready",
+      "recommendation": "October 15 is confirmed as the Q4 launch date. Marketing and Product are both ready, and Sales reports no blocking customer conflicts. What remained was a 15-minute review to confirm — not a 90-minute meeting to discover.",
+      "launch_date": "October 15",
+      "product_status": "Ready",
+      "constraint": "Two enterprise customers require notice",
+      "owner": "Head of Product",
+      "fields": [
+        {
+          "label": "Recommended Date",
+          "value": "October 15",
+          "source": "Marketing"
+        },
+        {
+          "label": "Marketing",
+          "value": "Ready",
+          "source": "Marketing"
+        },
+        {
+          "label": "Product",
+          "value": "Ready",
+          "source": "Product"
+        },
+        {
+          "label": "Sales",
+          "value": "No blocking conflicts",
+          "source": "Sales"
+        },
+        {
+          "label": "Decision Owner",
+          "value": "Head of Product",
+          "source": "SYNCLESS"
+        }
+      ],
+      "post_approval": [
+        "Decision logged to the Q4 launch record with all three sources",
+        "Head of Product notified as decision owner",
+        "Notice scheduled for the two enterprise customers",
+        "The original 10-person, 90-minute meeting request was never created"
+      ]
+    },
+    "confidence": 91
+  },
+  "routes": [
+    {
+      "id": "ai_handles_it",
+      "code": "01",
+      "name": "AI HANDLES IT",
+      "tagline": "No human input required",
+      "description": "SYNCLESS answers directly from existing systems and logs the answer.",
+      "rejectedBecause": "Two inputs — the realistic launch date and the customer conflict check — require a named human to stand behind them.",
+      "signals": [
+        {
+          "label": "Human input needed",
+          "value": "Yes"
+        },
+        {
+          "label": "Accountable owner",
+          "value": "Required"
+        },
+        {
+          "label": "Fit score",
+          "value": "12%"
+        }
+      ],
+      "notesTitle": "Blocked on",
+      "notes": [
+        "The earliest realistic launch date — a Marketing judgement, not a stored fact",
+        "Customer conflicts — a Sales commitment that needs an owner"
+      ]
+    },
+    {
+      "id": "async_first",
+      "code": "02",
+      "name": "ASYNC FIRST",
+      "tagline": "Collect, synthesize, decide",
+      "description": "SYNCLESS asks the three owners targeted questions, synthesizes the answers and drafts the decision.",
+      "selectedBecause": "82% information sufficiency with only 38% meeting necessity — the answers exist and need collecting, not debating.",
+      "signals": [
+        {
+          "label": "Stakeholders",
+          "value": "3"
+        },
+        {
+          "label": "Human time",
+          "value": "15 min"
+        },
+        {
+          "label": "Fit score",
+          "value": "91%"
+        }
+      ],
+      "notesTitle": "Questions to dispatch",
+      "notes": [
+        "Marketing — earliest realistic launch date?",
+        "Product — technically ready by October 15?",
+        "Sales — any conflicting customer commitments?"
+      ]
+    },
+    {
+      "id": "meeting",
+      "code": "03",
+      "name": "MEETING",
+      "tagline": "Real-time discussion required",
+      "description": "Escalate to a live session when the trade-off is genuine and stakeholders conflict.",
+      "rejectedBecause": "Meeting necessity 38% with low stakeholder conflict — there is no trade-off here that needs arguing in real time.",
+      "signals": [
+        {
+          "label": "Participants",
+          "value": "10"
+        },
+        {
+          "label": "Duration",
+          "value": "90 min"
+        },
+        {
+          "label": "Fit score",
+          "value": "38%"
+        }
+      ],
+      "preview": {
+        "participants": [
+          "CEO",
+          "Head of Product",
+          "Head of Marketing",
+          "VP Sales",
+          "Engineering Lead",
+          "Design Lead",
+          "Customer Success",
+          "Finance",
+          "Ops",
+          "Legal"
+        ],
+        "duration": "90 minutes",
+        "earliestSlot": "Thu 14:00 — 3 days of coordination",
+        "decisionGoal": "Agree the final Q4 launch date.",
+        "cost": 13500
+      }
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "q-marketing",
+      "role": "Marketing",
+      "name": "Dana Whitfield",
+      "title": "Head of Marketing",
+      "initials": "DW",
+      "question": "What is the earliest realistic launch date?",
+      "answer": "October 15 is the earliest realistic campaign launch.",
+      "respondedIn": "12 min",
+      "channel": "Async request"
+    },
+    {
+      "id": "q-product",
+      "role": "Product",
+      "name": "Marcus Lee",
+      "title": "Head of Product",
+      "initials": "ML",
+      "question": "Is the product technically ready by October 15?",
+      "answer": "Product is on track for October 15.",
+      "respondedIn": "26 min",
+      "channel": "Async request"
+    },
+    {
+      "id": "q-sales",
+      "role": "Sales",
+      "name": "Priya Raghavan",
+      "title": "VP Sales",
+      "initials": "PR",
+      "question": "Do any existing customer commitments conflict with October 15?",
+      "answer": "Two enterprise customers require notice, but October 15 is acceptable.",
+      "respondedIn": "41 min",
+      "channel": "Async request",
+      "flag": {
+        "kind": "constraint",
+        "label": "Constraint detected",
+        "effect": "Two enterprise customers require advance notice. Not a blocker — promoted into the decision as a follow-up action."
+      }
+    }
+  ],
+  "synthesis": "3 of 3 responses collected in 41 minutes. No conflicts. One constraint surfaced and carried into the decision: two enterprise customers need advance notice of the October 15 date.",
+  "ledger": [
+    {
+      "label": "Calendar invites sent",
+      "value": "0"
+    },
+    {
+      "label": "Meetings scheduled",
+      "value": "0"
+    },
+    {
+      "label": "Stakeholders contacted",
+      "value": "3"
+    },
+    {
+      "label": "Targeted questions",
+      "value": "3"
+    },
+    {
+      "label": "Conflicts detected",
+      "value": "0"
+    },
+    {
+      "label": "Time to full response",
+      "value": "41 min"
+    }
+  ],
+  "routeLocked": {
+    "label": "Coordination cost avoided",
+    "value": "NT$13,500",
+    "caption": "3 targeted questions to 3 named stakeholders · no calendar invite created"
+  },
+  "roi": {
+    "headline": "We turned a 90-minute coordination meeting into a 15-minute decision review.",
+    "rows": [
+      {
+        "metric": "Participants",
+        "before": "10 people",
+        "after": "3 stakeholders"
+      },
+      {
+        "metric": "Synchronous time",
+        "before": "90-minute meeting",
+        "after": "15-minute review"
+      },
+      {
+        "metric": "Coordination",
+        "before": "3 days of scheduling",
+        "after": "Same-day decision"
+      },
+      {
+        "metric": "Coordination cost",
+        "before": "NT$13,500",
+        "after": "NT$2,250"
+      }
+    ],
+    "savingLabel": "Estimated saving",
+    "saving": "NT$11,250",
+    "savingAmount": 11250,
+    "footnote": "Same decision. Same confidence. A fraction of the synchronization.",
+    "transform": {
+      "from": "90 MIN",
+      "to": "15 MIN"
+    }
+  },
+  "closing": {
+    "statement": "We don't manage meetings. We eliminate the meetings your company never needed.",
+    "wordmark": "SYNCLESS",
+    "positioning": "AI Decision Layer for Modern Teams"
+  }
+}

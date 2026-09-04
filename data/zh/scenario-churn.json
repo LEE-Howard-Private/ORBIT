@@ -1,0 +1,342 @@
+{
+  "id": "enterprise-churn",
+  "title": "企業客戶流失率 — 已回答",
+  "summary": "這是一個問題，不是一個決策。答案已經在資料裡。",
+  "shortRequest": "我們上個月的企業客戶流失率是多少？",
+  "org": "Northwind Systems · 50 人 SaaS 公司",
+  "requester": {
+    "name": "Julian Ross",
+    "role": "營運長",
+    "initials": "JR"
+  },
+  "submittedAt": "週二 08:41",
+  "request": "我們上個月的企業客戶流失率是多少？",
+  "intro": {
+    "headline": "問題不在會議本身。",
+    "subhead": "在於不必要的同步。",
+    "lines": [
+      "有些需求根本不是決策，只是一個問題，卻掛上了六份行事曆。",
+      "6 個人、30 分鐘，只為了讀出一個系統早就存好的數字。",
+      "SYNCLESS 在任何人打開行事曆之前就先回答它。"
+    ]
+  },
+  "before": {
+    "chain": [
+      "提出問題",
+      "Slack 討論串",
+      "有人去拉資料",
+      "邀請 6 個人",
+      "30 分鐘檢視會議",
+      "把數字唸出來"
+    ],
+    "cost": [
+      {
+        "label": "參與人數",
+        "value": "6 人"
+      },
+      {
+        "label": "會議長度",
+        "value": "30 分鐘"
+      },
+      {
+        "label": "協調成本",
+        "value": "NT$2,700"
+      },
+      {
+        "label": "取得答案時間",
+        "value": "1 天"
+      }
+    ],
+    "verdict": "為了唸出一個 Customer Analytics 隨時查得到的數字，開了一場會。",
+    "note": "問題不是那 30 分鐘。問題是沒有人先確認答案是不是早就存在。"
+  },
+  "analysis": {
+    "route": "ai_handles_it",
+    "necessity_score": 6,
+    "information_sufficiency": 98,
+    "headline": "答案已經存在於公司的資料中。不需要任何人的判斷，也就不需要同步任何人。",
+    "decision_complexity": "Low",
+    "realtime_discussion": "None",
+    "stakeholder_conflict": "None",
+    "information_sources": [
+      {
+        "label": "Customer Analytics",
+        "status": "available",
+        "detail": "2026 年 8 月企業客戶群組"
+      },
+      {
+        "label": "Billing",
+        "status": "available",
+        "detail": "生效中的企業合約"
+      },
+      {
+        "label": "CRM",
+        "status": "available",
+        "detail": "帳戶狀態與續約情形"
+      }
+    ],
+    "reasoning": [
+      "這個需求問的是 Customer Analytics 隨時可查的事實，完全沒有判斷成分。",
+      "沒有任何決策要做，因此不需要指派負責人。",
+      "資訊充足度 98%：三個支援系統的數字互相吻合。",
+      "6 人 × 30 分鐘的混合同步時間，成本會是 NT$2,700。",
+      "SYNCLESS 直接回答並附上來源，讓數字可以被查證，而不是被討論。"
+    ],
+    "estimated_cost": 2700,
+    "cost_basis": "6 人 × 0.5 小時 × NT$900 混合時薪 = NT$2,700",
+    "recommended_participants": [],
+    "recommended_duration": 0,
+    "questions": [
+      {
+        "id": "sys-analytics",
+        "role": "Customer Analytics",
+        "question": "上個月的企業客戶流失率是多少？"
+      },
+      {
+        "id": "sys-billing",
+        "role": "Billing",
+        "question": "該期間有多少生效中的企業帳戶？"
+      },
+      {
+        "id": "sys-crm",
+        "role": "CRM",
+        "question": "這個數字背後有異常嗎？"
+      }
+    ],
+    "decision": {
+      "title": "企業客戶流失率 — 已回答",
+      "status": "答案已就緒",
+      "recommendation": "2026 年 8 月企業客戶流失率為 4.2%，較 7 月的 4.8% 下降，基於 214 個生效中的企業帳戶。直接由 Customer Analytics 回答並附上來源 — 沒有會議、沒有負責人、沒有協調成本。",
+      "launch_date": "",
+      "product_status": "",
+      "constraint": "",
+      "owner": "自動回答 — 不需負責人",
+      "fields": [
+        {
+          "label": "企業客戶流失率",
+          "value": "4.2%",
+          "source": "Customer Analytics"
+        },
+        {
+          "label": "資料來源",
+          "value": "Customer Analytics — 2026 年 8 月",
+          "source": "Customer Analytics"
+        },
+        {
+          "label": "趨勢",
+          "value": "自 7 月的 4.8% 下降",
+          "source": "Customer Analytics"
+        },
+        {
+          "label": "決策負責人",
+          "value": "不需要",
+          "source": "SYNCLESS"
+        }
+      ],
+      "post_approval": [
+        "回答連同來源一併送出",
+        "已建檔，下一個問同樣問題的人可以立即取得",
+        "原本 6 人的檢視會議從未被建立"
+      ]
+    },
+    "confidence": 96
+  },
+  "routes": [
+    {
+      "id": "ai_handles_it",
+      "code": "01",
+      "name": "AI 直接處理",
+      "tagline": "不需要任何人回答",
+      "description": "SYNCLESS 直接從既有系統取得答案並記錄下來。",
+      "selectedBecause": "資訊充足度 98%，會議必要性僅 6% — 這個答案是已儲存的事實，不是判斷。",
+      "signals": [
+        {
+          "label": "是否需要人回答",
+          "value": "不需要"
+        },
+        {
+          "label": "是否需要負責人",
+          "value": "不需要"
+        },
+        {
+          "label": "適配分數",
+          "value": "96%"
+        }
+      ],
+      "notesTitle": "答案來自",
+      "notes": [
+        "Customer Analytics — 2026 年 8 月企業客戶群組",
+        "Billing — 214 個生效中的企業帳戶",
+        "CRM — 續約與帳戶狀態"
+      ]
+    },
+    {
+      "id": "async_first",
+      "code": "02",
+      "name": "非同步優先",
+      "tagline": "收集、彙整、決策",
+      "description": "SYNCLESS 向負責人提出針對性提問，彙整回覆後草擬決策。",
+      "rejectedBecause": "為了系統早就存好的數字去問三個人，只會增加延遲，不會增加準確度。",
+      "signals": [
+        {
+          "label": "關係人數",
+          "value": "0 人"
+        },
+        {
+          "label": "人力時間",
+          "value": "0 分鐘"
+        },
+        {
+          "label": "適配分數",
+          "value": "18%"
+        }
+      ],
+      "notesTitle": "略過的原因",
+      "notes": [
+        "每個問題都對應到一個系統紀錄",
+        "陳述一個已量測的事實不需要負責人簽核"
+      ]
+    },
+    {
+      "id": "meeting",
+      "code": "03",
+      "name": "召開會議",
+      "tagline": "需要即時討論",
+      "description": "當取捨真實存在、關係人立場衝突時，才升級為實體討論。",
+      "rejectedBecause": "會議必要性 6% — 這裡沒有任何需要一群人做的決策。",
+      "signals": [
+        {
+          "label": "參與人數",
+          "value": "6 人"
+        },
+        {
+          "label": "會議長度",
+          "value": "30 分鐘"
+        },
+        {
+          "label": "適配分數",
+          "value": "6%"
+        }
+      ],
+      "preview": {
+        "participants": [
+          "營運長",
+          "財務長",
+          "客戶成功負責人",
+          "業務副總",
+          "資料主管",
+          "幕僚長"
+        ],
+        "duration": "30 分鐘",
+        "earliestSlot": "最快週三 11:00 — 需 1 天協調",
+        "decisionGoal": "檢視上個月的企業客戶流失率。",
+        "cost": 2700
+      }
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "sys-analytics",
+      "role": "Customer Analytics",
+      "name": "Customer Analytics",
+      "title": "2026 年 8 月群組",
+      "initials": "CA",
+      "question": "上個月的企業客戶流失率是多少？",
+      "answer": "2026 年 8 月企業客戶流失率為 4.2%，較 7 月的 4.8% 下降。",
+      "respondedIn": "0.6 秒",
+      "channel": "系統查詢"
+    },
+    {
+      "id": "sys-billing",
+      "role": "Billing",
+      "name": "Billing",
+      "title": "企業合約",
+      "initials": "BI",
+      "question": "該期間有多少生效中的企業帳戶？",
+      "answer": "8 月有 214 個生效中的企業帳戶，其中 9 個未續約。",
+      "respondedIn": "0.9 秒",
+      "channel": "系統查詢"
+    },
+    {
+      "id": "sys-crm",
+      "role": "CRM",
+      "name": "CRM",
+      "title": "帳戶狀態",
+      "initials": "CR",
+      "question": "這個數字背後有異常嗎？",
+      "answer": "沒有單一客群主導這個數字。9 個未續約中有 7 個是年約制、規模低於 NT$500K 的帳戶。",
+      "respondedIn": "1.2 秒",
+      "channel": "系統查詢"
+    }
+  ],
+  "synthesis": "3 個資料來源結果一致：2026 年 8 月企業客戶流失率 4.2%，信心度 96%。沒有問過任何人，也沒有建立任何會議。",
+  "ledger": [
+    {
+      "label": "發出的行事曆邀請",
+      "value": "0"
+    },
+    {
+      "label": "詢問的人數",
+      "value": "0"
+    },
+    {
+      "label": "查詢的系統",
+      "value": "3 個"
+    },
+    {
+      "label": "結果一致的來源",
+      "value": "3 / 3"
+    },
+    {
+      "label": "偵測到的衝突",
+      "value": "0"
+    },
+    {
+      "label": "取得答案耗時",
+      "value": "1.2 秒"
+    }
+  ],
+  "routeLocked": {
+    "label": "省下的協調成本",
+    "value": "NT$2,700",
+    "caption": "聯繫 0 人 · 在 1.2 秒內由 3 個系統紀錄回答完成"
+  },
+  "roi": {
+    "headline": "我們把一場 30 分鐘的報數會議，變成一個附來源的答案。",
+    "rows": [
+      {
+        "metric": "參與人數",
+        "before": "6 人",
+        "after": "0 人"
+      },
+      {
+        "metric": "同步時間",
+        "before": "30 分鐘會議",
+        "after": "不需開會"
+      },
+      {
+        "metric": "協調過程",
+        "before": "1 天喬時間",
+        "after": "1.2 秒完成回答"
+      },
+      {
+        "metric": "協調成本",
+        "before": "NT$2,700",
+        "after": "NT$0"
+      }
+    ],
+    "savingLabel": "預估節省",
+    "saving": "NT$2,700",
+    "savingAmount": 2700,
+    "footnote": "最便宜的協調，就是完全不需要協調。",
+    "transform": {
+      "from": "30 分鐘",
+      "to": "1.2 秒"
+    }
+  },
+  "closing": {
+    "statement": "我們不管理會議。我們消滅那些你的公司從來不需要的會議。",
+    "wordmark": "SYNCLESS",
+    "positioning": "為現代團隊打造的 AI 決策層"
+  }
+}

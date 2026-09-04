@@ -1,0 +1,342 @@
+{
+  "id": "enterprise-churn",
+  "title": "Enterprise Churn — Answered",
+  "summary": "A question, not a decision. The answer already exists in the data.",
+  "shortRequest": "What was our enterprise customer churn rate last month?",
+  "org": "Northwind Systems · 50-person SaaS",
+  "requester": {
+    "name": "Julian Ross",
+    "role": "COO",
+    "initials": "JR"
+  },
+  "submittedAt": "Tue 08:41",
+  "request": "What was our enterprise customer churn rate last month?",
+  "intro": {
+    "headline": "Meetings are not the problem.",
+    "subhead": "Unnecessary synchronization is.",
+    "lines": [
+      "Some requests are not decisions at all. They are questions with six calendars attached.",
+      "6 people. 30 minutes. To read a number one system already holds.",
+      "SYNCLESS answers those before anyone opens a calendar."
+    ]
+  },
+  "before": {
+    "chain": [
+      "Request",
+      "Slack thread",
+      "Someone pulls the data",
+      "6 people invited",
+      "30-minute review",
+      "Number read aloud"
+    ],
+    "cost": [
+      {
+        "label": "Participants",
+        "value": "6"
+      },
+      {
+        "label": "Meeting length",
+        "value": "30 min"
+      },
+      {
+        "label": "Coordination cost",
+        "value": "NT$2,700"
+      },
+      {
+        "label": "Time to answer",
+        "value": "1 day"
+      }
+    ],
+    "verdict": "A meeting to read a number that Customer Analytics reports on demand.",
+    "note": "The problem is not the 30 minutes. The problem is that nobody checked whether the answer already existed."
+  },
+  "analysis": {
+    "route": "ai_handles_it",
+    "necessity_score": 6,
+    "information_sufficiency": 98,
+    "headline": "The answer already exists in the company's data. No human judgement is required, so no human needs to be synchronized.",
+    "decision_complexity": "Low",
+    "realtime_discussion": "None",
+    "stakeholder_conflict": "None",
+    "information_sources": [
+      {
+        "label": "Customer Analytics",
+        "status": "available",
+        "detail": "August 2026 enterprise cohort"
+      },
+      {
+        "label": "Billing",
+        "status": "available",
+        "detail": "Active enterprise contracts"
+      },
+      {
+        "label": "CRM",
+        "status": "available",
+        "detail": "Account status and renewals"
+      }
+    ],
+    "reasoning": [
+      "The request asks for a fact that Customer Analytics reports on demand — nothing here is a judgement call.",
+      "No decision is being made, so no accountable owner is required.",
+      "Information sufficiency is 98%: all three supporting systems agree.",
+      "6 participants × 30 minutes of blended synchronous time would cost NT$2,700.",
+      "SYNCLESS answers directly and cites the source, so the number can be checked rather than debated."
+    ],
+    "estimated_cost": 2700,
+    "cost_basis": "6 participants × 0.5 h × NT$900 blended hourly = NT$2,700",
+    "recommended_participants": [],
+    "recommended_duration": 0,
+    "questions": [
+      {
+        "id": "sys-analytics",
+        "role": "Customer Analytics",
+        "question": "What was enterprise churn last month?"
+      },
+      {
+        "id": "sys-billing",
+        "role": "Billing",
+        "question": "How many enterprise accounts were active in the period?"
+      },
+      {
+        "id": "sys-crm",
+        "role": "CRM",
+        "question": "Is anything unusual behind that number?"
+      }
+    ],
+    "decision": {
+      "title": "Enterprise Churn — Answered",
+      "status": "Answer Ready",
+      "recommendation": "Enterprise churn was 4.2% in August 2026, down from 4.8% in July, across 214 active enterprise accounts. Answered directly from Customer Analytics with the source attached — no meeting, no owner, no coordination.",
+      "launch_date": "",
+      "product_status": "",
+      "constraint": "",
+      "owner": "Auto-answered — no owner required",
+      "fields": [
+        {
+          "label": "Enterprise Churn",
+          "value": "4.2%",
+          "source": "Customer Analytics"
+        },
+        {
+          "label": "Source",
+          "value": "Customer Analytics — August 2026",
+          "source": "Customer Analytics"
+        },
+        {
+          "label": "Trend",
+          "value": "Down from 4.8% in July",
+          "source": "Customer Analytics"
+        },
+        {
+          "label": "Decision Owner",
+          "value": "None required",
+          "source": "SYNCLESS"
+        }
+      ],
+      "post_approval": [
+        "Answer returned with its source attached",
+        "Logged so the next person asking gets it instantly",
+        "The 6-person review meeting was never created"
+      ]
+    },
+    "confidence": 96
+  },
+  "routes": [
+    {
+      "id": "ai_handles_it",
+      "code": "01",
+      "name": "AI HANDLES IT",
+      "tagline": "No human input required",
+      "description": "SYNCLESS answers directly from existing systems and logs the answer.",
+      "selectedBecause": "98% information sufficiency with 6% meeting necessity — the answer is a stored fact, not a judgement.",
+      "signals": [
+        {
+          "label": "Human input needed",
+          "value": "No"
+        },
+        {
+          "label": "Accountable owner",
+          "value": "Not required"
+        },
+        {
+          "label": "Fit score",
+          "value": "96%"
+        }
+      ],
+      "notesTitle": "Answered from",
+      "notes": [
+        "Customer Analytics — August 2026 enterprise cohort",
+        "Billing — 214 active enterprise accounts",
+        "CRM — renewal and account status"
+      ]
+    },
+    {
+      "id": "async_first",
+      "code": "02",
+      "name": "ASYNC FIRST",
+      "tagline": "Collect, synthesize, decide",
+      "description": "SYNCLESS asks the owners targeted questions, synthesizes the answers and drafts the decision.",
+      "rejectedBecause": "Asking three people for a number the systems already hold would add latency, not accuracy.",
+      "signals": [
+        {
+          "label": "Stakeholders",
+          "value": "0"
+        },
+        {
+          "label": "Human time",
+          "value": "0 min"
+        },
+        {
+          "label": "Fit score",
+          "value": "18%"
+        }
+      ],
+      "notesTitle": "Skipped because",
+      "notes": [
+        "Every question maps to a system of record",
+        "No owner sign-off is required to state a measured fact"
+      ]
+    },
+    {
+      "id": "meeting",
+      "code": "03",
+      "name": "MEETING",
+      "tagline": "Real-time discussion required",
+      "description": "Escalate to a live session when the trade-off is genuine and stakeholders conflict.",
+      "rejectedBecause": "Meeting necessity 6% — there is no decision here for a room full of people to make.",
+      "signals": [
+        {
+          "label": "Participants",
+          "value": "6"
+        },
+        {
+          "label": "Duration",
+          "value": "30 min"
+        },
+        {
+          "label": "Fit score",
+          "value": "6%"
+        }
+      ],
+      "preview": {
+        "participants": [
+          "COO",
+          "CFO",
+          "Head of Customer Success",
+          "VP Sales",
+          "Data Lead",
+          "Chief of Staff"
+        ],
+        "duration": "30 minutes",
+        "earliestSlot": "Wed 11:00 — 1 day of coordination",
+        "decisionGoal": "Review last month's enterprise churn rate.",
+        "cost": 2700
+      }
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "sys-analytics",
+      "role": "Customer Analytics",
+      "name": "Customer Analytics",
+      "title": "August 2026 cohort",
+      "initials": "CA",
+      "question": "What was enterprise churn last month?",
+      "answer": "Enterprise churn was 4.2% in August 2026, down from 4.8% in July.",
+      "respondedIn": "0.6 s",
+      "channel": "System query"
+    },
+    {
+      "id": "sys-billing",
+      "role": "Billing",
+      "name": "Billing",
+      "title": "Enterprise contracts",
+      "initials": "BI",
+      "question": "How many enterprise accounts were active in the period?",
+      "answer": "214 active enterprise accounts in August, 9 non-renewals.",
+      "respondedIn": "0.9 s",
+      "channel": "System query"
+    },
+    {
+      "id": "sys-crm",
+      "role": "CRM",
+      "name": "CRM",
+      "title": "Account status",
+      "initials": "CR",
+      "question": "Is anything unusual behind that number?",
+      "answer": "No single segment drove it. Seven of the nine were sub-NT$500K accounts on annual terms.",
+      "respondedIn": "1.2 s",
+      "channel": "System query"
+    }
+  ],
+  "synthesis": "3 of 3 sources agree. Enterprise churn 4.2% for August 2026, confidence 96%. No human was asked anything, and no meeting was created.",
+  "ledger": [
+    {
+      "label": "Calendar invites sent",
+      "value": "0"
+    },
+    {
+      "label": "Humans asked",
+      "value": "0"
+    },
+    {
+      "label": "Systems queried",
+      "value": "3"
+    },
+    {
+      "label": "Sources in agreement",
+      "value": "3 / 3"
+    },
+    {
+      "label": "Conflicts detected",
+      "value": "0"
+    },
+    {
+      "label": "Time to answer",
+      "value": "1.2 s"
+    }
+  ],
+  "routeLocked": {
+    "label": "Coordination cost avoided",
+    "value": "NT$2,700",
+    "caption": "0 people contacted · answered from 3 systems of record in 1.2 seconds"
+  },
+  "roi": {
+    "headline": "We turned a 30-minute status meeting into a cited answer.",
+    "rows": [
+      {
+        "metric": "Participants",
+        "before": "6 people",
+        "after": "0"
+      },
+      {
+        "metric": "Synchronous time",
+        "before": "30-minute meeting",
+        "after": "No meeting"
+      },
+      {
+        "metric": "Coordination",
+        "before": "1 day of scheduling",
+        "after": "Answered in 1.2 seconds"
+      },
+      {
+        "metric": "Coordination cost",
+        "before": "NT$2,700",
+        "after": "NT$0"
+      }
+    ],
+    "savingLabel": "Estimated saving",
+    "saving": "NT$2,700",
+    "savingAmount": 2700,
+    "footnote": "The cheapest coordination is none at all.",
+    "transform": {
+      "from": "30 MIN",
+      "to": "1.2 SEC"
+    }
+  },
+  "closing": {
+    "statement": "We don't manage meetings. We eliminate the meetings your company never needed.",
+    "wordmark": "SYNCLESS",
+    "positioning": "AI Decision Layer for Modern Teams"
+  }
+}

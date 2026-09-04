@@ -1,0 +1,361 @@
+{
+  "id": "launch-delay",
+  "title": "上線是否延後三個月",
+  "summary": "真實的取捨，關係人立場衝突。這一個需要開會。",
+  "shortRequest": "我們應該把產品上線延後三個月嗎？",
+  "org": "Northwind Systems · 50 人 SaaS 公司",
+  "requester": {
+    "name": "Elena Mercado",
+    "role": "執行長",
+    "initials": "EM"
+  },
+  "submittedAt": "週三 16:20",
+  "request": "我們應該把產品上線延後三個月嗎？",
+  "intro": {
+    "headline": "問題不在會議本身。",
+    "subhead": "在於不必要的同步。",
+    "lines": [
+      "有些決策真的需要一個房間 — 而一個決策層必須有能力這樣判斷。",
+      "營收、產品品質、客戶承諾與工程產能，四個方向互相拉扯。",
+      "SYNCLESS 不會迴避這場會議。它會把會議縮到對的尺寸，並且準備好再進去。"
+    ]
+  },
+  "before": {
+    "chain": [
+      "執行長提出需求",
+      "Slack 上爭論",
+      "行事曆排程",
+      "邀請 12 個人",
+      "120 分鐘會議",
+      "沒有結構的爭論",
+      "沒有結論"
+    ],
+    "cost": [
+      {
+        "label": "參與人數",
+        "value": "12 人"
+      },
+      {
+        "label": "會議長度",
+        "value": "120 分鐘"
+      },
+      {
+        "label": "協調成本",
+        "value": "NT$21,600"
+      },
+      {
+        "label": "典型結果",
+        "value": "延後再議"
+      }
+    ],
+    "verdict": "錯誤的會議：人太多、沒有事先收集立場，而且通常後面還會再排一場。",
+    "note": "問題不是這件事需要開會。問題是沒有人在排會之前，先決定它該有多大。"
+  },
+  "analysis": {
+    "route": "meeting",
+    "necessity_score": 89,
+    "information_sufficiency": 34,
+    "headline": "這個決策牽涉營收、產品品質、客戶承諾與工程產能之間互相衝突的取捨，無法用書面解決 — 必須即時討論。",
+    "decision_complexity": "High",
+    "realtime_discussion": "Required",
+    "stakeholder_conflict": "High",
+    "information_sources": [
+      {
+        "label": "業務承諾",
+        "status": "available",
+        "detail": "NT$18M 的 Q4 pipeline 綁定此日期"
+      },
+      {
+        "label": "工程評估",
+        "status": "available",
+        "detail": "3 個已知 P1 缺陷，需 6–8 週"
+      },
+      {
+        "label": "營收影響",
+        "status": "partial",
+        "detail": "取決於這個決策本身"
+      },
+      {
+        "label": "風險胃納",
+        "status": "missing",
+        "detail": "只有執行長能做的判斷"
+      }
+    ],
+    "reasoning": [
+      "這個決策所需的資訊只有 34% 是既有事實，其餘屬於對風險胃納的判斷。",
+      "業務、工程與財務給出直接對立的結論，非同步收集無法調和。",
+      "利害關係衝突高：營收、產品品質、客戶承諾與工程產能彼此互斥。",
+      "這個決策在本會計年度內不可逆，因此同步討論的門檻更高。",
+      "SYNCLESS 仍把會議縮小：4 位決策者、30 分鐘，且所有立場已事先收齊。"
+    ],
+    "estimated_cost": 21600,
+    "cost_basis": "12 人 × 2 小時 × NT$900 混合時薪 = NT$21,600",
+    "recommended_participants": [
+      "執行長",
+      "產品",
+      "工程",
+      "業務"
+    ],
+    "recommended_duration": 30,
+    "questions": [
+      {
+        "id": "q-sales",
+        "role": "業務",
+        "question": "目前的上線日期綁定了多少營收承諾？"
+      },
+      {
+        "id": "q-eng",
+        "role": "工程",
+        "question": "現在就上線的品質風險是什麼？"
+      },
+      {
+        "id": "q-finance",
+        "role": "財務",
+        "question": "延後三個月對營收的影響是什麼？"
+      }
+    ],
+    "decision": {
+      "title": "現在上線 vs 延後三個月",
+      "status": "需要召開會議",
+      "recommendation": "這一個需要一個房間。業務、工程與財務從同一批證據得出互相衝突的結論，而且這個決策在本會計年度內不可逆。SYNCLESS 已把會議縮到 4 位決策者、30 分鐘，並事先收齊三方立場，讓時間花在決策而不是簡報。",
+      "launch_date": "",
+      "product_status": "",
+      "constraint": "本會計年度內不可逆",
+      "owner": "執行長",
+      "fields": [
+        {
+          "label": "需要做的決策",
+          "value": "現在上線 vs 延後三個月",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "參與者",
+          "value": "執行長、產品、工程、業務",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "會議長度",
+          "value": "30 分鐘",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "衝突所在",
+          "value": "營收 vs 產品品質",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "決策負責人",
+          "value": "執行長",
+          "source": "SYNCLESS"
+        }
+      ],
+      "post_approval": [
+        "已排定 30 分鐘決策會議，4 位參與者",
+        "已寄出事前資料，附上三方收集到的立場",
+        "已從原始邀請名單移除 8 個人",
+        "已記錄決策期限：本週內"
+      ]
+    },
+    "confidence": 89
+  },
+  "routes": [
+    {
+      "id": "ai_handles_it",
+      "code": "01",
+      "name": "AI 直接處理",
+      "tagline": "不需要任何人回答",
+      "description": "SYNCLESS 直接從既有系統取得答案並記錄下來。",
+      "rejectedBecause": "這是對風險胃納的判斷，不是可以從系統查到的事實。",
+      "signals": [
+        {
+          "label": "是否需要人回答",
+          "value": "需要"
+        },
+        {
+          "label": "是否需要負責人",
+          "value": "需要"
+        },
+        {
+          "label": "適配分數",
+          "value": "3%"
+        }
+      ],
+      "notesTitle": "卡在這裡",
+      "notes": [
+        "NT$18M 的 pipeline 是否勝過 3 個 P1 缺陷",
+        "只有執行長能負這個責任"
+      ]
+    },
+    {
+      "id": "async_first",
+      "code": "02",
+      "name": "非同步優先",
+      "tagline": "收集、彙整、決策",
+      "description": "SYNCLESS 向負責人提出針對性提問，彙整回覆後草擬決策。",
+      "rejectedBecause": "已先執行非同步收集，結果回傳一個未解衝突 — 業務、工程與財務無法在書面上調和。",
+      "signals": [
+        {
+          "label": "關係人數",
+          "value": "3 人"
+        },
+        {
+          "label": "發現的衝突",
+          "value": "1 個"
+        },
+        {
+          "label": "適配分數",
+          "value": "31%"
+        }
+      ],
+      "notesTitle": "先跑過，然後升級",
+      "notes": [
+        "2 小時 10 分內收齊立場",
+        "1 個未解衝突 → 升級為會議"
+      ]
+    },
+    {
+      "id": "meeting",
+      "code": "03",
+      "name": "召開會議",
+      "tagline": "需要即時討論",
+      "description": "當取捨真實存在、關係人立場衝突時，才升級為實體討論。",
+      "selectedBecause": "會議必要性 89%，決策複雜度高、利害關係衝突高 — 這個取捨必須即時爭論。",
+      "signals": [
+        {
+          "label": "參與人數",
+          "value": "12 → 4 人"
+        },
+        {
+          "label": "會議長度",
+          "value": "120 → 30 分鐘"
+        },
+        {
+          "label": "適配分數",
+          "value": "89%"
+        }
+      ],
+      "preview": {
+        "participants": [
+          "執行長",
+          "產品",
+          "工程",
+          "業務"
+        ],
+        "duration": "30 分鐘",
+        "earliestSlot": "明天 09:00 — 立場已事先收齊",
+        "decisionGoal": "現在上線，還是延後三個月。",
+        "cost": 1800
+      }
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "q-sales",
+      "role": "業務",
+      "name": "Priya Raghavan",
+      "title": "業務副總",
+      "initials": "PR",
+      "question": "目前的上線日期綁定了多少營收承諾？",
+      "answer": "有 NT$18M 的 Q4 pipeline 綁定已公告的日期，其中兩份企業合約直接引用了這個日期。",
+      "respondedIn": "1 小時 12 分",
+      "channel": "非同步請求"
+    },
+    {
+      "id": "q-eng",
+      "role": "工程",
+      "name": "Sofia Brandt",
+      "title": "工程主管",
+      "initials": "SB",
+      "question": "現在就上線的品質風險是什麼？",
+      "answer": "現在上線代表帶著 3 個已知 P1 缺陷出貨。要清掉它們需要 6 到 8 週的產能。",
+      "respondedIn": "1 小時 48 分",
+      "channel": "非同步請求",
+      "flag": {
+        "kind": "conflict",
+        "label": "偵測到衝突",
+        "effect": "業務已對外承諾日期，工程認為品質標準未達。同一批證據、相反的結論 — 這無法用書面解決。"
+      }
+    },
+    {
+      "id": "q-finance",
+      "role": "財務",
+      "name": "Victor Alvarez",
+      "title": "財務主管",
+      "initials": "VA",
+      "question": "延後三個月對營收的影響是什麼？",
+      "answer": "延後三個月會把大約 NT$24M 的認列營收推遲到下一個會計年度。",
+      "respondedIn": "2 小時 10 分",
+      "channel": "非同步請求"
+    }
+  ],
+  "synthesis": "3 位關係人的立場在 2 小時 10 分內收齊，其中 1 個未解衝突：業務與財務傾向守住日期，工程認為品質標準未達。非同步無法收斂 — 升級為 30 分鐘決策會議，所有立場事先載入。",
+  "ledger": [
+    {
+      "label": "發出的行事曆邀請",
+      "value": "目前 0"
+    },
+    {
+      "label": "聯繫的關係人",
+      "value": "3 位"
+    },
+    {
+      "label": "收齊的立場",
+      "value": "3 / 3"
+    },
+    {
+      "label": "偵測到的衝突",
+      "value": "1 個"
+    },
+    {
+      "label": "是否觸發升級",
+      "value": "是"
+    },
+    {
+      "label": "全數回覆耗時",
+      "value": "2 小時 10 分"
+    }
+  ],
+  "routeLocked": {
+    "label": "會議已縮到對的尺寸",
+    "value": "12 → 4 人",
+    "caption": "120 → 30 分鐘 · 所有立場在任何人走進會議室之前就已收齊"
+  },
+  "roi": {
+    "headline": "我們把一場 120 分鐘的爭論，變成 30 分鐘的決策。",
+    "rows": [
+      {
+        "metric": "參與人數",
+        "before": "12 人",
+        "after": "4 位決策者"
+      },
+      {
+        "metric": "同步時間",
+        "before": "120 分鐘會議",
+        "after": "30 分鐘決策"
+      },
+      {
+        "metric": "協調過程",
+        "before": "4 天喬時間",
+        "after": "明天開會，已備妥資料"
+      },
+      {
+        "metric": "協調成本",
+        "before": "NT$21,600",
+        "after": "NT$1,800"
+      }
+    ],
+    "savingLabel": "預估節省",
+    "saving": "NT$19,800",
+    "savingAmount": 19800,
+    "footnote": "SYNCLESS 不反對開會。它反對的是不必要的同步。",
+    "transform": {
+      "from": "120 分鐘",
+      "to": "30 分鐘"
+    }
+  },
+  "closing": {
+    "statement": "我們不管理會議。我們消滅那些你的公司從來不需要的會議。",
+    "wordmark": "SYNCLESS",
+    "positioning": "為現代團隊打造的 AI 決策層"
+  }
+}

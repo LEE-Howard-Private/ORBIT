@@ -1,0 +1,361 @@
+{
+  "id": "launch-delay",
+  "title": "Three-Month Launch Delay",
+  "summary": "A real trade-off with conflicting stakeholders. This one needs a room.",
+  "shortRequest": "Should we delay the product launch by three months?",
+  "org": "Northwind Systems · 50-person SaaS",
+  "requester": {
+    "name": "Elena Mercado",
+    "role": "CEO",
+    "initials": "EM"
+  },
+  "submittedAt": "Wed 16:20",
+  "request": "Should we delay the product launch by three months?",
+  "intro": {
+    "headline": "Meetings are not the problem.",
+    "subhead": "Unnecessary synchronization is.",
+    "lines": [
+      "Some decisions genuinely need a room — and a decision layer has to be able to say so.",
+      "Revenue, product quality, customer commitments and engineering capacity all pull in different directions.",
+      "SYNCLESS does not avoid this meeting. It sizes it, and walks in prepared."
+    ]
+  },
+  "before": {
+    "chain": [
+      "CEO request",
+      "Slack debate",
+      "Calendar scheduling",
+      "12 people invited",
+      "120-minute meeting",
+      "Unstructured argument",
+      "No decision"
+    ],
+    "cost": [
+      {
+        "label": "Participants",
+        "value": "12"
+      },
+      {
+        "label": "Meeting length",
+        "value": "120 min"
+      },
+      {
+        "label": "Coordination cost",
+        "value": "NT$21,600"
+      },
+      {
+        "label": "Typical outcome",
+        "value": "Deferred"
+      }
+    ],
+    "verdict": "The wrong meeting: too many people, no pre-collected positions, and usually a second meeting after it.",
+    "note": "The problem is not that this needs a meeting. The problem is that nobody sized the meeting before booking it."
+  },
+  "analysis": {
+    "route": "meeting",
+    "necessity_score": 89,
+    "information_sufficiency": 34,
+    "headline": "This decision involves conflicting trade-offs between revenue, product quality, customer commitments and engineering capacity. It cannot be resolved in writing — real-time discussion is required.",
+    "decision_complexity": "High",
+    "realtime_discussion": "Required",
+    "stakeholder_conflict": "High",
+    "information_sources": [
+      {
+        "label": "Sales commitments",
+        "status": "available",
+        "detail": "NT$18M of Q4 pipeline tied to the date"
+      },
+      {
+        "label": "Engineering assessment",
+        "status": "available",
+        "detail": "3 known P1 defects, 6–8 weeks to clear"
+      },
+      {
+        "label": "Revenue impact",
+        "status": "partial",
+        "detail": "Depends on the decision itself"
+      },
+      {
+        "label": "Risk appetite",
+        "status": "missing",
+        "detail": "A judgement only the CEO can make"
+      }
+    ],
+    "reasoning": [
+      "Only 34% of what this decision needs exists as fact — the rest is a judgement about risk appetite.",
+      "Sales, Engineering and Finance returned directly opposing conclusions. Async collection cannot reconcile them.",
+      "Stakeholder conflict is high: revenue, product quality, customer commitments and engineering capacity trade against each other.",
+      "The decision is irreversible within the fiscal year, which raises the bar for synchronous time.",
+      "SYNCLESS still sizes the meeting down: 4 decision-makers, 30 minutes, with every position pre-collected."
+    ],
+    "estimated_cost": 21600,
+    "cost_basis": "12 participants × 2 h × NT$900 blended hourly = NT$21,600",
+    "recommended_participants": [
+      "CEO",
+      "Product",
+      "Engineering",
+      "Sales"
+    ],
+    "recommended_duration": 30,
+    "questions": [
+      {
+        "id": "q-sales",
+        "role": "Sales",
+        "question": "What revenue is committed to the current launch date?"
+      },
+      {
+        "id": "q-eng",
+        "role": "Engineering",
+        "question": "What is the quality risk of shipping now?"
+      },
+      {
+        "id": "q-finance",
+        "role": "Finance",
+        "question": "What is the revenue impact of a three-month delay?"
+      }
+    ],
+    "decision": {
+      "title": "Ship Now vs Delay Three Months",
+      "status": "Meeting Required",
+      "recommendation": "This one needs a room. Sales, Engineering and Finance reached conflicting conclusions from the same evidence, and the call is irreversible inside the fiscal year. SYNCLESS has sized the meeting to the 4 decision-makers and 30 minutes, with all three positions collected in advance so the time is spent deciding, not briefing.",
+      "launch_date": "",
+      "product_status": "",
+      "constraint": "Irreversible within the fiscal year",
+      "owner": "CEO",
+      "fields": [
+        {
+          "label": "Decision Required",
+          "value": "Ship now vs delay 3 months",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "Participants",
+          "value": "CEO, Product, Engineering, Sales",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "Duration",
+          "value": "30 minutes",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "The conflict",
+          "value": "Revenue vs product quality",
+          "source": "SYNCLESS"
+        },
+        {
+          "label": "Decision Owner",
+          "value": "CEO",
+          "source": "SYNCLESS"
+        }
+      ],
+      "post_approval": [
+        "30-minute decision meeting scheduled with 4 participants",
+        "Pre-read sent with all three collected positions",
+        "8 people removed from the original invite",
+        "Decision deadline recorded: end of week"
+      ]
+    },
+    "confidence": 89
+  },
+  "routes": [
+    {
+      "id": "ai_handles_it",
+      "code": "01",
+      "name": "AI HANDLES IT",
+      "tagline": "No human input required",
+      "description": "SYNCLESS answers directly from existing systems and logs the answer.",
+      "rejectedBecause": "This is a judgement about risk appetite, not a fact that can be retrieved from a system.",
+      "signals": [
+        {
+          "label": "Human input needed",
+          "value": "Yes"
+        },
+        {
+          "label": "Accountable owner",
+          "value": "Required"
+        },
+        {
+          "label": "Fit score",
+          "value": "3%"
+        }
+      ],
+      "notesTitle": "Blocked on",
+      "notes": [
+        "Whether NT$18M of pipeline outweighs 3 P1 defects",
+        "A call only the CEO is accountable for"
+      ]
+    },
+    {
+      "id": "async_first",
+      "code": "02",
+      "name": "ASYNC FIRST",
+      "tagline": "Collect, synthesize, decide",
+      "description": "SYNCLESS asks the owners targeted questions, synthesizes the answers and drafts the decision.",
+      "rejectedBecause": "Async collection ran first and returned an unresolved conflict — Sales, Engineering and Finance cannot be reconciled in writing.",
+      "signals": [
+        {
+          "label": "Stakeholders",
+          "value": "3"
+        },
+        {
+          "label": "Conflicts found",
+          "value": "1"
+        },
+        {
+          "label": "Fit score",
+          "value": "31%"
+        }
+      ],
+      "notesTitle": "Ran first, then escalated",
+      "notes": [
+        "Positions collected in 2 h 10 min",
+        "1 unresolved conflict → escalated to a meeting"
+      ]
+    },
+    {
+      "id": "meeting",
+      "code": "03",
+      "name": "MEETING",
+      "tagline": "Real-time discussion required",
+      "description": "Escalate to a live session when the trade-off is genuine and stakeholders conflict.",
+      "selectedBecause": "Meeting necessity 89% with high decision complexity and high stakeholder conflict — this trade-off has to be argued in real time.",
+      "signals": [
+        {
+          "label": "Participants",
+          "value": "12 → 4"
+        },
+        {
+          "label": "Duration",
+          "value": "120 → 30 min"
+        },
+        {
+          "label": "Fit score",
+          "value": "89%"
+        }
+      ],
+      "preview": {
+        "participants": [
+          "CEO",
+          "Product",
+          "Engineering",
+          "Sales"
+        ],
+        "duration": "30 minutes",
+        "earliestSlot": "Tomorrow 09:00 — positions already collected",
+        "decisionGoal": "Ship now vs delay three months.",
+        "cost": 1800
+      }
+    }
+  ],
+  "stakeholders": [
+    {
+      "id": "q-sales",
+      "role": "Sales",
+      "name": "Priya Raghavan",
+      "title": "VP Sales",
+      "initials": "PR",
+      "question": "What revenue is committed to the current launch date?",
+      "answer": "NT$18M of Q4 pipeline is tied to the announced date, and two enterprise contracts reference it directly.",
+      "respondedIn": "1 h 12 min",
+      "channel": "Async request"
+    },
+    {
+      "id": "q-eng",
+      "role": "Engineering",
+      "name": "Sofia Brandt",
+      "title": "Engineering Lead",
+      "initials": "SB",
+      "question": "What is the quality risk of shipping now?",
+      "answer": "Shipping now means launching with 3 known P1 defects. Clearing them takes 6 to 8 weeks of capacity.",
+      "respondedIn": "1 h 48 min",
+      "channel": "Async request",
+      "flag": {
+        "kind": "conflict",
+        "label": "Conflict detected",
+        "effect": "Sales is committed to the date, Engineering says the quality bar is not met. Same evidence, opposing conclusions — this is not resolvable in writing."
+      }
+    },
+    {
+      "id": "q-finance",
+      "role": "Finance",
+      "name": "Victor Alvarez",
+      "title": "Finance Director",
+      "initials": "VA",
+      "question": "What is the revenue impact of a three-month delay?",
+      "answer": "A three-month delay moves roughly NT$24M of recognized revenue into the next fiscal year.",
+      "respondedIn": "2 h 10 min",
+      "channel": "Async request"
+    }
+  ],
+  "synthesis": "3 of 3 positions collected in 2 h 10 min. 1 unresolved conflict: Sales and Finance are committed to the date, Engineering says the quality bar is not met. Async cannot close this — escalating to a 30-minute decision meeting with all positions pre-loaded.",
+  "ledger": [
+    {
+      "label": "Calendar invites sent",
+      "value": "0 so far"
+    },
+    {
+      "label": "Stakeholders contacted",
+      "value": "3"
+    },
+    {
+      "label": "Positions collected",
+      "value": "3 / 3"
+    },
+    {
+      "label": "Conflicts detected",
+      "value": "1"
+    },
+    {
+      "label": "Escalation triggered",
+      "value": "Yes"
+    },
+    {
+      "label": "Time to full response",
+      "value": "2 h 10 min"
+    }
+  ],
+  "routeLocked": {
+    "label": "Meeting right-sized",
+    "value": "12 → 4 people",
+    "caption": "120 → 30 minutes · every position collected before anyone walks in"
+  },
+  "roi": {
+    "headline": "We turned a 120-minute argument into a 30-minute decision.",
+    "rows": [
+      {
+        "metric": "Participants",
+        "before": "12 people",
+        "after": "4 decision-makers"
+      },
+      {
+        "metric": "Synchronous time",
+        "before": "120-minute meeting",
+        "after": "30-minute decision"
+      },
+      {
+        "metric": "Coordination",
+        "before": "4 days of scheduling",
+        "after": "Meets tomorrow, pre-briefed"
+      },
+      {
+        "metric": "Coordination cost",
+        "before": "NT$21,600",
+        "after": "NT$1,800"
+      }
+    ],
+    "savingLabel": "Estimated saving",
+    "saving": "NT$19,800",
+    "savingAmount": 19800,
+    "footnote": "SYNCLESS is not anti-meeting. It is anti-unnecessary-synchronization.",
+    "transform": {
+      "from": "120 MIN",
+      "to": "30 MIN"
+    }
+  },
+  "closing": {
+    "statement": "We don't manage meetings. We eliminate the meetings your company never needed.",
+    "wordmark": "SYNCLESS",
+    "positioning": "AI Decision Layer for Modern Teams"
+  }
+}
