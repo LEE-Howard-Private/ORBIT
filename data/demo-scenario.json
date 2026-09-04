@@ -150,7 +150,21 @@
         "The original 10-person, 90-minute meeting request was never created"
       ]
     },
-    "confidence": 91
+    "confidence": 91,
+    "factors": {
+      "information_sufficiency": 82,
+      "stakeholder_count": 3,
+      "stakeholder_complexity": 46,
+      "decision_ambiguity": 31,
+      "real_time_dependency": 18,
+      "urgency": 64,
+      "disagreement_potential": 27,
+      "decision_consequence": 42
+    },
+    "meeting": {
+      "participants": 10,
+      "minutes": 90
+    }
   },
   "routes": [
     {

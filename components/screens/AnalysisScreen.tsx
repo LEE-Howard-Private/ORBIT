@@ -1,10 +1,13 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { useUI } from "@/components/LangContext";
 import { Check, Ring, Spinner } from "@/components/ui/Icons";
 import { Orbit } from "@/components/ui/Orbit";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stage } from "@/components/ui/Stage";
+import { Chevron } from "@/components/ui/Icons";
+import { readDecision } from "@/lib/decision";
 import { ntd } from "@/lib/format";
 import type { Scenario } from "@/lib/types";
 
@@ -12,13 +15,17 @@ export function AnalysisScreen({ scenario, step }: { scenario: Scenario; step: n
   const ui = useUI();
   const a = scenario.analysis;
   const roles = a.questions.map((q) => q.role);
+  const { cost, engine } = readDecision(scenario);
+  const engineRoute = engine?.route ?? a.route;
+  const [showMath, setShowMath] = useState(false);
+  const mathRef = useRef<HTMLDivElement>(null);
 
   const answers = [
     scenario.requester.role,
     `${roles.length}`,
     `${a.information_sufficiency}%`,
     ui.levels[a.decision_complexity ?? ""] ?? a.decision_complexity ?? "",
-    ui.routeLabel[a.route],
+    ui.routeLabel[engineRoute],
   ];
 
   const orbitProgress = Math.min(1, Math.max(0, (step - 1) / 3));
@@ -96,13 +103,71 @@ export function AnalysisScreen({ scenario, step }: { scenario: Scenario; step: n
 
       <Reveal show={step >= 4} delay={120} className="mt-10">
         <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <span className="text-[13px] text-fg3">{ui.analysis.cost}</span>
-          <span className="tnum text-[22px] text-accent">{ntd(a.estimated_cost)}</span>
+          <span className="text-[13px] text-fg3">{ui.cost.label}</span>
+          <span className="tnum text-[22px] text-accent">{ntd(cost?.total ?? a.estimated_cost)}</span>
         </div>
-        {a.cost_basis ? (
-          <p className="tnum mt-2 text-[11.5px] text-fg4">{a.cost_basis}</p>
+
+        {cost ? (
+          <div className="mt-3">
+            <button
+              onClick={() => {
+                const next = !showMath;
+                setShowMath(next);
+                if (next) {
+                  setTimeout(
+                    () => mathRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }),
+                    260
+                  );
+                }
+              }}
+              className="flex items-center gap-2 text-[12px] text-fg4 transition-colors duration-150 hover:text-fg2"
+              aria-expanded={showMath}
+            >
+              {showMath ? ui.cost.hide : ui.cost.show}
+              <span
+                className="flex"
+                style={{
+                  transform: showMath ? "rotate(180deg)" : "none",
+                  transition: "transform var(--d-std) var(--ease)",
+                }}
+              >
+                <Chevron className="h-3 w-3" />
+              </span>
+            </button>
+
+            <div
+              ref={mathRef}
+              className="overflow-hidden"
+              style={{
+                maxHeight: showMath ? 190 : 0,
+                opacity: showMath ? 1 : 0,
+                transition:
+                  "max-height var(--d-major) var(--ease), opacity var(--d-std) var(--ease-soft)",
+              }}
+            >
+              <div className="mt-5 max-w-[420px]">
+                <div className="flex items-baseline justify-between gap-4 border-b border-line py-2">
+                  <span className="text-[12.5px] text-fg3">{ui.cost.participants}</span>
+                  <span className="tnum text-[13px] text-fg">{cost.participants}</span>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 border-b border-line py-2">
+                  <span className="text-[12.5px] text-fg3">{ui.cost.duration}</span>
+                  <span className="tnum text-[13px] text-fg">{cost.minutes} min</span>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 border-b border-line py-2">
+                  <span className="text-[12.5px] text-fg3">{ui.cost.rate}</span>
+                  <span className="tnum text-[13px] text-fg">{ntd(cost.rate)} / h</span>
+                </div>
+                <div className="tnum mt-3 text-[12.5px] text-fg2">
+                  {cost.participants} × {cost.hours} h × {ntd(cost.rate)} = {ntd(cost.total)}
+                </div>
+                <p className="mt-2 text-[11.5px] text-fg4">{ui.cost.assumption}</p>
+              </div>
+            </div>
+          </div>
         ) : null}
       </Reveal>
+
     </Stage>
   );
 }

@@ -12,10 +12,20 @@ export interface DecisionField {
   source: string;
 }
 
+import type { Factors } from "./engine";
+
 export interface InfoSource {
   label: string;
   status: "available" | "partial" | "missing";
   detail?: string;
+}
+
+export interface MeetingBrief {
+  objective: string;
+  decisions: string[];
+  participants: string[];
+  preread: string[];
+  questions: string[];
 }
 
 export interface Decision {
@@ -25,6 +35,8 @@ export interface Decision {
   status?: string;
   /** What SYNCLESS does the moment the brief is approved — closes the loop. */
   post_approval?: string[];
+  /** Present when the route is MEETING: what the room is for. */
+  meeting_brief?: MeetingBrief;
   launch_date: string;
   product_status: string;
   constraint: string;
@@ -39,6 +51,10 @@ export interface Analysis {
   information_sufficiency: number;
   reasoning: string[];
   estimated_cost: number;
+  /** The extracted factors the decision engine scores. */
+  factors?: Factors;
+  /** The meeting that was requested, for the transparent cost calculation. */
+  meeting?: { participants: number; minutes: number };
   /** Shown as the arithmetic behind estimated_cost, so the price is checkable. */
   cost_basis?: string;
   /** Why this route was chosen, in one sentence, above the detailed reasoning. */

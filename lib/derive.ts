@@ -194,6 +194,8 @@ export function buildScenarioFromAnalysis(request: string, a: LiveAnalysis): Sce
       reasoning: a.reasoning,
       estimated_cost: beforeCost,
       headline: a.headline,
+      factors: a.factors,
+      meeting: a.meeting,
       decision_complexity: a.decision_complexity,
       realtime_discussion: a.realtime_discussion,
       stakeholder_conflict: a.stakeholder_conflict,

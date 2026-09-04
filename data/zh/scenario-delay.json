@@ -154,9 +154,47 @@
         "已寄出事前資料，附上三方收集到的立場",
         "已從原始邀請名單移除 8 個人",
         "已記錄決策期限：本週內"
-      ]
+      ],
+      "meeting_brief": {
+        "objective": "決定現在就上線，還是把上線延後三個月。",
+        "decisions": [
+          "現在上線、延後三個月，或分階段釋出",
+          "若延後：如何向兩家綁定已公告日期的企業客戶說明",
+          "若上線：三個 P1 缺陷中我們接受帶著哪幾個出貨"
+        ],
+        "participants": [
+          "執行長 — 負責拍板",
+          "產品",
+          "工程",
+          "業務"
+        ],
+        "preread": [
+          "業務：NT$18M 的 Q4 pipeline 綁定已公告日期",
+          "工程：3 個已知 P1 缺陷，需 6–8 週產能清除",
+          "財務：延後三個月會把約 NT$24M 推遲到下一個會計年度"
+        ],
+        "questions": [
+          "NT$18M 的承諾 pipeline，值得帶著 3 個已知 P1 缺陷出貨嗎？",
+          "能通過品質標準的最小延後幅度是多少？",
+          "要能照已公告日期上線，必須先成立哪些條件？"
+        ]
+      }
     },
-    "confidence": 89
+    "confidence": 89,
+    "factors": {
+      "information_sufficiency": 34,
+      "stakeholder_count": 4,
+      "stakeholder_complexity": 78,
+      "decision_ambiguity": 84,
+      "real_time_dependency": 76,
+      "urgency": 71,
+      "disagreement_potential": 89,
+      "decision_consequence": 88
+    },
+    "meeting": {
+      "participants": 12,
+      "minutes": 120
+    }
   },
   "routes": [
     {

@@ -53,7 +53,7 @@
   "analysis": {
     "route": "ai_handles_it",
     "necessity_score": 6,
-    "information_sufficiency": 98,
+    "information_sufficiency": 96,
     "headline": "答案已經存在於公司的資料中。不需要任何人的判斷，也就不需要同步任何人。",
     "decision_complexity": "Low",
     "realtime_discussion": "None",
@@ -139,7 +139,21 @@
         "原本 6 人的檢視會議從未被建立"
       ]
     },
-    "confidence": 96
+    "confidence": 96,
+    "factors": {
+      "information_sufficiency": 96,
+      "stakeholder_count": 0,
+      "stakeholder_complexity": 8,
+      "decision_ambiguity": 9,
+      "real_time_dependency": 4,
+      "urgency": 38,
+      "disagreement_potential": 5,
+      "decision_consequence": 18
+    },
+    "meeting": {
+      "participants": 6,
+      "minutes": 30
+    }
   },
   "routes": [
     {

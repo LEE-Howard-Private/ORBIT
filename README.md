@@ -65,9 +65,38 @@ same screens, the same animation, the same numbers. The choice is remembered per
 switching mid-flow keeps you on the same scenario and screen. English is the default; to ship
 Chinese as the default, change the initial `useState<Lang>("en")` in `app/page.tsx`.
 
+## Decision engine
+
+The model never picks the route. It extracts eight factors from the request; `lib/engine.ts`
+scores the three routes with weights written out in code, and the highest score wins.
+
+| Factor | What it measures |
+|---|---|
+| Information sufficiency | How much of what the decision needs already exists |
+| Stakeholder load | How many people must contribute (a count, normalised) |
+| Stakeholder complexity | How tangled their interests are |
+| Decision ambiguity | How under-specified the decision is |
+| Real-time dependency | How much resolving it needs live back-and-forth |
+| Urgency | How soon it must be resolved |
+| Disagreement potential | How likely the parties are to reach opposing conclusions |
+| Decision consequence | How costly it is to get wrong |
+
+Each route reads those factors through explicit terms — `high`, `low`, or `mid` (best around a
+centre, falling off either side) — and every score is the weighted average of its terms, so a
+recommendation can be re-derived by hand from the numbers the Decision Trace shows.
+
+**Confidence** is the winning route's own fit score, nudged by how clearly it won. It is
+recommendation confidence, never a probability that a meeting happens, and the three route fit
+scores are independent — they do not sum to 100. The brief's confidence is a separate number: how
+sure the *decision* is once the answers are in.
+
+**Meeting cost** is `participants × hours × loaded hourly cost`, with the rate a single named
+constant (`LOADED_HOURLY_COST`, NT$900/person/hour) labelled in the UI as a demo assumption. The
+calculation is inspectable on the analysis screen.
+
 ## Deterministic by design
 
-The Golden Path never calls a model. Every number, question and response in the three scenarios is
+The Golden Path never calls a model, and the route is never a number a model chose. Every number, question and response in the three scenarios is
 fixed demo data in `data/`, so the presentation cannot fail because of model variability. The real
 analysis architecture is still there — the same schema, the same screens — and runs live only when
 a free-text request is typed with an API key present.
@@ -131,6 +160,9 @@ data/
   scenario-delay.json   Three-month launch delay (MEETING)
   zh/                   The same three scenarios in Traditional Chinese
 lib/
+  engine.ts             Factor weights, route scoring, confidence, meeting cost
+  decision.ts           The one place the UI asks what the engine decided
+  events.ts             Named moments (analysisStarted, routeDetermined, …) for cue hooks
   script.ts             Golden Path beat timeline
   stages.ts             Narrative order, rail mapping, per-stage reveal depth
   scenario.ts           Scenario registry

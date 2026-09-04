@@ -15,6 +15,7 @@ import { HomeScreen } from "@/components/screens/HomeScreen";
 import { MontageScreen } from "@/components/screens/MontageScreen";
 import { RoiScreen } from "@/components/screens/RoiScreen";
 import { RouteScreen } from "@/components/screens/RouteScreen";
+import { emit } from "@/lib/events";
 import { STRINGS, type Lang } from "@/lib/i18n";
 import {
   findScenarioByRequest,
@@ -38,7 +39,7 @@ export default function Page() {
 
   const [cursor, setCursor] = useState(-1);
   const [endIndex, setEndIndex] = useState(-1);
-  const [speed] = useState(1);
+  const [speed, setSpeed] = useState(1);
 
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -119,6 +120,7 @@ export default function Page() {
 
   const playFullDemo = useCallback(() => {
     setError(null);
+    setSpeed(1);
     setScenario(demo);
     setInput(demo.request);
     setCursor(0);
@@ -151,9 +153,10 @@ export default function Page() {
     if (i < SEQUENCE.length - 1) goToStage(SEQUENCE[i + 1]);
   }, [stage, goToStage]);
 
-  /** Plays only the request → analysis stretch, then rests. */
+  /** Plays only the request → analysis stretch, briskly, then rests. */
   const playAnalysis = useCallback((source: Scenario) => {
     const s = buildScript(source);
+    setSpeed(2.1);
     setCursor(s.findIndex((b) => b.stage === "request" && b.step === 2));
     setEndIndex(s.findIndex((b) => b.stage === "analysis" && b.step === 5));
   }, []);
@@ -243,6 +246,26 @@ export default function Page() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [stage]);
+
+  /* ---------- named moments, for a cinematic build to hang cues on ---------- */
+
+  const lastBeat = useRef("");
+  useEffect(() => {
+    const beat = `${stage}:${step}`;
+    if (beat === lastBeat.current) return;
+    lastBeat.current = beat;
+
+    const n = scenario.stakeholders.length;
+    if (stage === "analysis" && step === 0) emit("analysisStarted", { scenario: scenario.id });
+    else if (stage === "analysis" && step > 0)
+      emit("analysisStepCompleted", { index: step - 1, total: 5 });
+    else if (stage === "route" && step >= 3)
+      emit("routeDetermined", { route: scenario.analysis.route });
+    else if (stage === "async" && step === 0) emit("asyncStarted", { stakeholders: n });
+    else if (stage === "async" && step > n && step <= n * 2)
+      emit("responseReceived", { index: step - n - 1, total: n });
+    else if (stage === "brief" && step >= 1) emit("decisionReady", { scenario: scenario.id });
+  }, [stage, step, scenario]);
 
   /* ---------- palette ---------- */
 

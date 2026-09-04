@@ -51,7 +51,10 @@ export function Rail({
                   background: i === index ? "var(--text)" : "var(--text-4)",
                 }}
               />
-              <span className="pointer-events-none absolute bottom-[26px] left-1/2 -translate-x-1/2 whitespace-nowrap text-[10.5px] text-fg3 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+              <span
+                className="pointer-events-none absolute bottom-[26px] left-1/2 -translate-x-1/2 whitespace-nowrap text-[10.5px] transition-opacity duration-200 group-hover:opacity-100"
+                style={{ opacity: i === index ? 1 : 0, color: i === index ? "var(--text-2)" : "var(--text-3)" }}
+              >
                 {name}
               </span>
             </button>

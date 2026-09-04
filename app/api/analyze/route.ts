@@ -1,34 +1,46 @@
 import { NextResponse } from "next/server";
 import { buildScenarioFromAnalysis, type LiveAnalysis, type LiveQuestion } from "@/lib/derive";
-import type { RouteId } from "@/lib/types";
+import { decide, meetingCost, type Factors } from "@/lib/engine";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SYSTEM_PROMPT = `You are SYNCLESS, an AI decision-routing layer for companies.
+const SYSTEM_PROMPT = `You are the extraction layer of SYNCLESS, an AI decision layer for companies.
 
-Given a work or meeting request, decide the cheapest path to a real decision and route it to exactly one of:
-- "ai_handles_it": no human input is required; the answer already exists and no human needs to be accountable.
-- "async_first": the answer exists across a few named owners; collect it asynchronously, synthesize it, draft the decision.
-- "meeting": genuine disagreement or a trade-off that requires synchronous discussion.
+You do NOT choose the coordination route. A deterministic scoring model does that.
+Your job is to read a work or meeting request and extract structured, defensible attributes.
 
-Cost model: assume a blended cost of NT$150 per participant per 15 minutes of synchronous time.
-"estimated_cost" is the cost of the meeting the requester ORIGINALLY asked for (the baseline), in TWD, as a plain number.
+Score every factor from 0 to 100:
+- information_sufficiency: how much of what this decision needs already exists in systems or documents
+- stakeholder_complexity: how tangled the involved parties' interests are
+- decision_ambiguity: how under-specified the decision itself is
+- real_time_dependency: how much resolving it depends on live back-and-forth
+- urgency: how soon it must be resolved
+- disagreement_potential: how likely the parties are to reach opposing conclusions
+- decision_consequence: how costly it is to get wrong
 
 Reply with JSON only, matching exactly this shape:
 {
-  "route": "ai_handles_it" | "async_first" | "meeting",
-  "necessity_score": 0-100,
-  "information_sufficiency": 0-100,
-  "reasoning": ["3-5 short, concrete sentences explaining the routing decision"],
-  "estimated_cost": number,
-  "cost_basis": "the arithmetic behind estimated_cost, e.g. 10 participants × 1.5 h × NT$900 blended hourly = NT$13,500",
+  "factors": {
+    "information_sufficiency": 0-100,
+    "stakeholder_count": number of people who must contribute,
+    "stakeholder_complexity": 0-100,
+    "decision_ambiguity": 0-100,
+    "real_time_dependency": 0-100,
+    "urgency": 0-100,
+    "disagreement_potential": 0-100,
+    "decision_consequence": 0-100
+  },
+  "meeting": {"participants": number the requester would have invited, "minutes": length they would have booked},
+  "headline": "One sentence explaining what this request actually needs, in plain language",
+  "reasoning": ["3-5 short, concrete sentences about the factors above"],
+  "information_sources": [{"label": "Marketing plan", "status": "available" | "partial" | "missing", "detail": "one short clause"}],
   "recommended_participants": ["Role titles who must actually be involved"],
-  "recommended_duration": number,
+  "recommended_duration": minutes of human time the cheapest path needs,
   "questions": [
     {
       "role": "Marketing",
-      "question": "One concrete question for this role",
+      "question": "One concrete question this role can answer on their own",
       "respondent_name": "A plausible person name",
       "respondent_title": "Their title",
       "simulated_answer": "A plausible, specific answer, 1-2 sentences",
@@ -38,19 +50,19 @@ Reply with JSON only, matching exactly this shape:
   ],
   "decision": {
     "title": "Short decision brief title",
+    "status": "Decision Ready",
     "recommendation": "2-3 sentences stating the recommended decision",
     "owner": "The accountable role",
     "fields": [{"label": "Short label", "value": "Short value", "source": "Which role supplied it"}],
     "post_approval": ["3-4 concrete things SYNCLESS does the moment the brief is approved"]
   },
-  "confidence": 0-100,
-  "baseline": {"participants": number, "duration_minutes": number, "coordination_time": "e.g. 3-day coordination"},
-  "synthesis": "One sentence summarizing what the collected answers established"
+  "confidence": 0-100 confidence in the DECISION itself once the answers are in,
+  "synthesis": "One sentence summarizing what the collected answers established",
+  "baseline": {"coordination_time": "e.g. 3-day coordination"}
 }
 
-Rules: 2-4 questions. Add "flag" to at most one question — a constraint it introduces, or a conflict with another answer. Route to "meeting" when a real conflict exists. 3-5 decision fields. No markdown, no commentary — JSON only.`;
-
-const VALID_ROUTES: RouteId[] = ["ai_handles_it", "async_first", "meeting"];
+Rules: 2-4 questions, each independently answerable. 3-5 decision fields. 2-4 information sources.
+Add "flag" to at most one question. No markdown, no commentary — JSON only.`;
 
 function clampScore(value: unknown, fallback: number): number {
   const n = typeof value === "number" ? value : Number(value);
@@ -63,8 +75,27 @@ function asStringArray(value: unknown): string[] {
   return value.map((v) => String(v)).filter((v) => v.trim().length > 0);
 }
 
+function normalizeFactors(raw: any): Factors {
+  const n = (v: unknown, fallback: number) => clampScore(v, fallback);
+  return {
+    information_sufficiency: n(raw?.information_sufficiency, 50),
+    stakeholder_count: Math.max(0, Math.min(20, Math.round(Number(raw?.stakeholder_count) || 3))),
+    stakeholder_complexity: n(raw?.stakeholder_complexity, 40),
+    decision_ambiguity: n(raw?.decision_ambiguity, 40),
+    real_time_dependency: n(raw?.real_time_dependency, 40),
+    urgency: n(raw?.urgency, 50),
+    disagreement_potential: n(raw?.disagreement_potential, 35),
+    decision_consequence: n(raw?.decision_consequence, 45),
+  };
+}
+
 function normalize(parsed: any): LiveAnalysis {
-  const route: RouteId = VALID_ROUTES.includes(parsed?.route) ? parsed.route : "async_first";
+  // The model extracts; the engine decides.
+  const factors = normalizeFactors(parsed?.factors);
+  const engine = decide(factors);
+  const participants = Math.max(2, Math.min(30, Math.round(Number(parsed?.meeting?.participants) || 8)));
+  const minutes = Math.max(15, Math.min(240, Math.round(Number(parsed?.meeting?.minutes) || 60)));
+  const cost = meetingCost(participants, minutes);
 
   const questions: LiveQuestion[] = Array.isArray(parsed?.questions)
     ? parsed.questions
@@ -104,15 +135,24 @@ function normalize(parsed: any): LiveAnalysis {
     fields.push({ label: "Owner", value: owner, source: "SYNCLESS" });
   }
 
-  const cost = Number(parsed?.estimated_cost);
-
   return {
-    route,
-    necessity_score: clampScore(parsed?.necessity_score, 50),
-    information_sufficiency: clampScore(parsed?.information_sufficiency, 50),
+    route: engine.route,
+    factors,
+    meeting: { participants, minutes },
+    necessity_score: engine.scores.meeting,
+    information_sufficiency: factors.information_sufficiency,
+    headline: parsed?.headline ? String(parsed.headline) : undefined,
     reasoning: asStringArray(parsed?.reasoning).slice(0, 6),
-    estimated_cost: Number.isFinite(cost) && cost > 0 ? Math.round(cost) : 9000,
-    cost_basis: parsed?.cost_basis ? String(parsed.cost_basis) : undefined,
+    estimated_cost: cost.total,
+    cost_basis: `${cost.participants} × ${cost.hours} h × NT$${cost.rate} = NT$${cost.total.toLocaleString("en-US")}`,
+    information_sources: Array.isArray(parsed?.information_sources)
+      ? parsed.information_sources.slice(0, 5).map((s: any) => ({
+          label: String(s?.label ?? "Source"),
+          status:
+            s?.status === "partial" ? ("partial" as const) : s?.status === "missing" ? ("missing" as const) : ("available" as const),
+          detail: s?.detail ? String(s.detail) : undefined,
+        }))
+      : undefined,
     recommended_participants: asStringArray(parsed?.recommended_participants).slice(0, 6),
     recommended_duration: clampScore(parsed?.recommended_duration, 20) || 20,
     questions,
@@ -124,6 +164,7 @@ function normalize(parsed: any): LiveAnalysis {
       constraint: String(parsed?.decision?.constraint ?? ""),
       owner,
       fields,
+      status: parsed?.decision?.status ? String(parsed.decision.status) : undefined,
       post_approval: Array.isArray(parsed?.decision?.post_approval)
         ? parsed.decision.post_approval.map((x: unknown) => String(x)).slice(0, 5)
         : undefined,

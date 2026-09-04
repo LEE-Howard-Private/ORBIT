@@ -53,7 +53,7 @@
   "analysis": {
     "route": "ai_handles_it",
     "necessity_score": 6,
-    "information_sufficiency": 98,
+    "information_sufficiency": 96,
     "headline": "The answer already exists in the company's data. No human judgement is required, so no human needs to be synchronized.",
     "decision_complexity": "Low",
     "realtime_discussion": "None",
@@ -139,7 +139,21 @@
         "The 6-person review meeting was never created"
       ]
     },
-    "confidence": 96
+    "confidence": 96,
+    "factors": {
+      "information_sufficiency": 96,
+      "stakeholder_count": 0,
+      "stakeholder_complexity": 8,
+      "decision_ambiguity": 9,
+      "real_time_dependency": 4,
+      "urgency": 38,
+      "disagreement_potential": 5,
+      "decision_consequence": 18
+    },
+    "meeting": {
+      "participants": 6,
+      "minutes": 30
+    }
   },
   "routes": [
     {

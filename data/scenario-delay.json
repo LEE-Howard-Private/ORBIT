@@ -154,9 +154,47 @@
         "Pre-read sent with all three collected positions",
         "8 people removed from the original invite",
         "Decision deadline recorded: end of week"
-      ]
+      ],
+      "meeting_brief": {
+        "objective": "Decide whether to ship the product now or delay the launch by three months.",
+        "decisions": [
+          "Ship now, delay three months, or stage a partial release",
+          "If we delay: what we tell the two enterprise accounts holding the announced date",
+          "If we ship: which of the three P1 defects we accept at launch"
+        ],
+        "participants": [
+          "CEO — accountable for the call",
+          "Product",
+          "Engineering",
+          "Sales"
+        ],
+        "preread": [
+          "Sales: NT$18M of Q4 pipeline tied to the announced date",
+          "Engineering: 3 known P1 defects, 6–8 weeks of capacity to clear",
+          "Finance: a three-month delay moves ~NT$24M into the next fiscal year"
+        ],
+        "questions": [
+          "Is NT$18M of committed pipeline worth shipping with 3 known P1 defects?",
+          "What is the smallest delay that clears the quality bar?",
+          "What would have to be true for us to ship on the announced date?"
+        ]
+      }
     },
-    "confidence": 89
+    "confidence": 89,
+    "factors": {
+      "information_sufficiency": 34,
+      "stakeholder_count": 4,
+      "stakeholder_complexity": 78,
+      "decision_ambiguity": 84,
+      "real_time_dependency": 76,
+      "urgency": 71,
+      "disagreement_potential": 89,
+      "decision_consequence": 88
+    },
+    "meeting": {
+      "participants": 12,
+      "minutes": 120
+    }
   },
   "routes": [
     {

@@ -83,6 +83,35 @@ export interface UIStrings {
     saving: string;
     finish: string;
   };
+  trace: {
+    open: string;
+    close: string;
+    factors: string;
+    factorNames: Record<string, string>;
+    fit: string;
+    fitNote: string;
+    recommendation: string;
+    confidence: string;
+  };
+  cost: {
+    label: string;
+    show: string;
+    hide: string;
+    formula: string;
+    participants: string;
+    duration: string;
+    rate: string;
+    assumption: string;
+  };
+  meetingBrief: {
+    title: string;
+    objective: string;
+    decisions: string;
+    participants: string;
+    preread: string;
+    questions: string;
+  };
+  evidenceNote: string;
   closing: { strategic: string };
   palette: {
     placeholder: string;
@@ -191,6 +220,44 @@ const en: UIStrings = {
     saving: "Coordination cost avoided",
     finish: "Finish",
   },
+  trace: {
+    open: "Why this decision",
+    close: "Hide decision trace",
+    factors: "Extracted factors",
+    factorNames: {
+      information_sufficiency: "Information sufficiency",
+      stakeholder_load: "Stakeholder load",
+      stakeholder_complexity: "Stakeholder complexity",
+      decision_ambiguity: "Decision ambiguity",
+      real_time_dependency: "Real-time dependency",
+      urgency: "Urgency",
+      disagreement_potential: "Disagreement potential",
+      decision_consequence: "Decision consequence",
+    },
+    fit: "Route fit",
+    fitNote: "Independent fit scores. They do not sum to 100.",
+    recommendation: "Recommendation",
+    confidence: "Recommendation confidence",
+  },
+  cost: {
+    label: "Cost of the meeting as requested",
+    show: "How this is calculated",
+    hide: "Hide calculation",
+    formula: "participants × hours × loaded hourly cost",
+    participants: "Participants",
+    duration: "Duration",
+    rate: "Loaded cost",
+    assumption: "Demo assumption, not a measurement.",
+  },
+  meetingBrief: {
+    title: "Meeting brief",
+    objective: "Objective",
+    decisions: "Decisions required",
+    participants: "Participants",
+    preread: "Pre-read",
+    questions: "Questions to resolve",
+  },
+  evidenceNote: "Simulated demo evidence",
   closing: { strategic: "Right work. Right people. Right synchronization." },
   palette: {
     placeholder: "What do you want to do?",
@@ -293,6 +360,44 @@ const zh: UIStrings = {
     saving: "省下的協調成本",
     finish: "完成",
   },
+  trace: {
+    open: "為什麼是這個判斷",
+    close: "收起判斷依據",
+    factors: "擷取到的因子",
+    factorNames: {
+      information_sufficiency: "資訊充足度",
+      stakeholder_load: "關係人負載",
+      stakeholder_complexity: "關係人複雜度",
+      decision_ambiguity: "決策模糊度",
+      real_time_dependency: "即時討論依賴度",
+      urgency: "急迫性",
+      disagreement_potential: "分歧可能性",
+      decision_consequence: "決策後果",
+    },
+    fit: "路徑適配",
+    fitNote: "三者為各自獨立的適配分數，加總不等於 100。",
+    recommendation: "建議路徑",
+    confidence: "建議信心度",
+  },
+  cost: {
+    label: "照原樣開會的成本",
+    show: "這個數字怎麼算的",
+    hide: "收起計算方式",
+    formula: "參與人數 × 小時 × 每人每小時成本",
+    participants: "參與人數",
+    duration: "會議長度",
+    rate: "每人每小時",
+    assumption: "示範用的假設值，不是實測數字。",
+  },
+  meetingBrief: {
+    title: "會議簡報",
+    objective: "會議目的",
+    decisions: "需要做出的決策",
+    participants: "參與者",
+    preread: "事前資料",
+    questions: "要解決的問題",
+  },
+  evidenceNote: "示範用的模擬依據",
   closing: { strategic: "對的工作、對的人、對的同步方式。" },
   palette: {
     placeholder: "你想做什麼？",

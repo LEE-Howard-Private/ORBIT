@@ -27,8 +27,12 @@ export function BriefScreen({
   const shown = step >= 1;
   const approved = step >= 2;
 
-  const hero = d.fields[0];
-  const rest = d.fields.slice(1);
+  // Some briefs lead with a field that just restates the title; don't say it twice.
+  const norm = (v: string) => v.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]/g, "");
+  const first = d.fields[0];
+  const duplicate = first ? norm(d.title).includes(norm(first.value).slice(0, 14)) : false;
+  const hero = duplicate ? undefined : first;
+  const rest = duplicate ? d.fields : d.fields.slice(1);
 
   return (
     <Stage wide>
@@ -51,10 +55,14 @@ export function BriefScreen({
 
       <Reveal show={shown} delay={160}>
         <div className="mt-12 flex flex-wrap items-end gap-x-16 gap-y-8">
-          <div>
-            <div className="eyebrow mb-3">{hero?.label}</div>
-            <div className="display text-[clamp(34px,5vw,58px)] leading-none text-fg">{hero?.value}</div>
-          </div>
+          {hero ? (
+            <div>
+              <div className="eyebrow mb-3">{hero.label}</div>
+              <div className="display text-[clamp(34px,5vw,58px)] leading-none text-fg">
+                {hero.value}
+              </div>
+            </div>
+          ) : null}
           <div className="flex flex-wrap gap-x-12 gap-y-6">
             <div>
               <div className="tnum text-[22px] leading-none text-fg">{a.confidence}%</div>
@@ -77,7 +85,10 @@ export function BriefScreen({
 
       {a.information_sources?.length ? (
         <Reveal show={shown} delay={400} className="mt-14">
-          <div className="eyebrow mb-1">{ui.brief.evidence}</div>
+          <div className="mb-1 flex items-baseline justify-between gap-4">
+            <span className="eyebrow">{ui.brief.evidence}</span>
+            <span className="text-[10.5px] text-fg4">{ui.evidenceNote}</span>
+          </div>
           {a.information_sources.map((source) => {
             const open = openEvidence === source.label;
             return (
@@ -113,6 +124,39 @@ export function BriefScreen({
               </button>
             );
           })}
+        </Reveal>
+      ) : null}
+
+      {d.meeting_brief ? (
+        <Reveal show={shown} delay={440} className="mt-14">
+          <div className="eyebrow mb-6">{ui.meetingBrief.title}</div>
+
+          <p className="max-w-[62ch] text-[16px] leading-[1.7] text-fg">
+            {d.meeting_brief.objective}
+          </p>
+
+          <div className="mt-9 grid gap-x-14 gap-y-9 sm:grid-cols-2">
+            {[
+              { label: ui.meetingBrief.decisions, items: d.meeting_brief.decisions },
+              { label: ui.meetingBrief.participants, items: d.meeting_brief.participants },
+              { label: ui.meetingBrief.preread, items: d.meeting_brief.preread },
+              { label: ui.meetingBrief.questions, items: d.meeting_brief.questions },
+            ].map((group, gi) => (
+              <Reveal key={group.label} show={shown} delay={520 + gi * 110}>
+                <div>
+                  <div className="eyebrow mb-3">{group.label}</div>
+                  <ul className="space-y-2">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex gap-2.5 text-[13.5px] leading-relaxed text-fg2">
+                        <span className="mt-[9px] h-px w-2.5 shrink-0" style={{ background: "var(--text-4)" }} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </Reveal>
       ) : null}
 
