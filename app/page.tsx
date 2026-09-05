@@ -16,6 +16,7 @@ import { ClosingScreen } from "@/components/screens/ClosingScreen";
 import { HomeScreen } from "@/components/screens/HomeScreen";
 import { MontageScreen } from "@/components/screens/MontageScreen";
 import { RoiScreen } from "@/components/screens/RoiScreen";
+import { WindowFrame } from "@/components/ui/WindowFrame";
 import { RouteScreen } from "@/components/screens/RouteScreen";
 import { readDecision } from "@/lib/decision";
 import { emit } from "@/lib/events";
@@ -262,8 +263,9 @@ export default function Page() {
     return () => window.removeEventListener("keydown", onKey);
   }, [goNext, goPrev, playDemo, stop]);
 
+  const scrollRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   }, [stage]);
 
   /* ---------- named moments, for a cinematic build to hang cues on ---------- */
@@ -365,38 +367,48 @@ export default function Page() {
   const current = playing ? beats[cursor] : undefined;
   const isPlayback = Boolean(current?.state);
 
+  const screenName = ui.screens[railIndex(stage)] ?? ui.screens[0];
+
   return (
     <LangProvider lang={lang}>
+      <WindowFrame
+        title="ORBIT"
+        subtitle={screenName}
+        onTitleClick={home}
+        scrollRef={scrollRef}
+        toolbar={
+          <FloatingNav
+            lang={lang}
+            onLang={changeLang}
+            playing={playing}
+            onPlay={() => playDemo()}
+            onStop={stop}
+            onPalette={() => setPaletteOpen(true)}
+            dimmed={playing}
+          />
+        }
+      >
       <div
-        className="grain relative min-h-screen"
+        className="grain relative min-h-full"
         data-lang={lang}
         style={{ ["--narrator-w" as string]: narratorOpen ? "352px" : "0px" } as React.CSSProperties}
       >
         <Atmosphere intensity={atmosphere} />
 
-        <div className="fixed inset-x-0 top-0 z-50 h-px">
+        <div className="fixed inset-x-0 top-0 z-[55] h-[2px]" style={{ top: "var(--titlebar)" }}>
           <div
-            className="h-full bg-accent"
+            className="h-full"
             style={{
               width: `${progress}%`,
-              opacity: playing ? 0.7 : 0,
+              background: "var(--accent)",
+              boxShadow: "0 0 12px 0 var(--accent-line)",
+              opacity: playing ? 1 : 0,
               transition: playing
                 ? `width ${progressMs}ms linear, opacity var(--d-std) var(--ease)`
                 : "opacity var(--d-std) var(--ease)",
             }}
           />
         </div>
-
-        <FloatingNav
-          lang={lang}
-          onLang={changeLang}
-          playing={playing}
-          onPlay={() => playDemo()}
-          onStop={stop}
-          onHome={home}
-          onPalette={() => setPaletteOpen(true)}
-          dimmed={playing}
-        />
 
         <StageIndicator
           index={cursor < 0 ? 0 : cursor}
@@ -473,6 +485,7 @@ export default function Page() {
 
         <span className="sr-only">{liveMode ? ui.common.live : ui.common.offline}</span>
       </div>
+      </WindowFrame>
     </LangProvider>
   );
 }

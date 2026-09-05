@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useUI } from "@/components/LangContext";
 import { Chevron } from "@/components/ui/Icons";
+import { Dot } from "@/components/ui/Dot";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stage } from "@/components/ui/Stage";
 import { readDecision } from "@/lib/decision";
@@ -30,7 +31,7 @@ function FactorRow({ label, value, show, delay }: { label: string; value: number
             className="absolute inset-y-0 left-0"
             style={{
               width: show ? `${value}%` : 0,
-              background: "var(--text-3)",
+              background: "var(--accent)",
               transition: `width 700ms var(--ease) ${delay + 80}ms`,
             }}
           />
@@ -67,7 +68,7 @@ export function RouteScreen({ scenario, step }: { scenario: Scenario; step: numb
         className="overflow-hidden"
         style={{ maxHeight: revealed ? 900 : 0, transition: "max-height 900ms var(--ease)" }}
       >
-        <Reveal show={revealed} delay={180} y={16} blur={9} duration={900}>
+        <Reveal show={revealed} delay={180} y={14} blur={0} duration={900}>
           <h1 className="display mt-8 text-[clamp(40px,6vw,72px)] text-fg">{chosen?.name}</h1>
         </Reveal>
 
@@ -81,15 +82,15 @@ export function RouteScreen({ scenario, step }: { scenario: Scenario; step: numb
           <div className="mt-9 flex flex-wrap gap-x-12 gap-y-4">
             {engine ? (
               <span className="block">
-                <span className="tnum block text-[22px] leading-none text-fg">
-                  {engine.confidence}%
+                <span className="stat block text-[clamp(28px,3.4vw,38px)] text-fg">
+                  {engine.confidence}<span className="text-fg3">%</span>
                 </span>
                 <span className="mt-2 block text-[12px] text-fg3">{ui.trace.confidence}</span>
               </span>
             ) : null}
             {chosen?.signals.slice(0, 2).map((s) => (
               <span key={s.label} className="block">
-                <span className="tnum block text-[22px] leading-none text-fg">{s.value}</span>
+                <span className="stat block text-[clamp(24px,2.8vw,30px)] text-fg">{s.value}</span>
                 <span className="mt-2 block text-[12px] text-fg3">{s.label}</span>
               </span>
             ))}
@@ -124,7 +125,7 @@ export function RouteScreen({ scenario, step }: { scenario: Scenario; step: numb
                   "max-height var(--d-major) var(--ease), opacity var(--d-std) var(--ease-soft)",
               }}
             >
-              <div className="grid gap-x-16 gap-y-10 pt-9 lg:grid-cols-[1.15fr_0.85fr]">
+              <div className="card-lg mt-8 grid gap-x-16 gap-y-10 px-6 py-8 md:px-8 lg:grid-cols-[1.15fr_0.85fr]">
                 <div>
                   <div className="eyebrow mb-3">{ui.trace.factors}</div>
                   {values
@@ -149,11 +150,14 @@ export function RouteScreen({ scenario, step }: { scenario: Scenario; step: numb
                         return (
                           <Reveal key={r.id} show={open} delay={140 + i * 90} y={6} duration={480}>
                             <div className="flex items-baseline justify-between gap-4 border-b border-line py-2.5">
-                              <span
-                                className="text-[12.5px]"
-                                style={{ color: isChosen ? "var(--accent)" : "var(--text-3)" }}
-                              >
-                                {ui.routeLabel[r.id]}
+                              <span className="flex items-center gap-2.5">
+                                <Dot state={isChosen ? "accent" : "idle"} />
+                                <span
+                                  className="text-[12.5px]"
+                                  style={{ color: isChosen ? "var(--text)" : "var(--text-3)" }}
+                                >
+                                  {ui.routeLabel[r.id]}
+                                </span>
                               </span>
                               <span
                                 className="tnum text-[14px]"
@@ -174,7 +178,10 @@ export function RouteScreen({ scenario, step }: { scenario: Scenario; step: numb
                     <Reveal show={open} delay={500} duration={480}>
                       <div className="mt-8">
                         <div className="eyebrow mb-3">{ui.trace.recommendation}</div>
-                        <div className="text-[15px] text-fg">{ui.routeLabel[routeId]}</div>
+                        <div className="flex items-center gap-2.5 text-[15px] text-fg">
+                          <Dot state="accent" />
+                          {ui.routeLabel[routeId]}
+                        </div>
                         <div className="tnum mt-1 text-[13px] text-fg3">
                           {ui.trace.confidence} {engine.confidence}%
                         </div>
@@ -196,6 +203,7 @@ export function RouteScreen({ scenario, step }: { scenario: Scenario; step: numb
           <Reveal key={route.id} show={step >= i + 1} delay={80} duration={600}>
             <div className="flex items-start justify-between gap-8 border-b border-line py-4">
               <span className="flex items-baseline gap-3">
+                <Dot state="idle" className="self-center" />
                 <span className="text-[13.5px] text-fg3">{route.name}</span>
                 {engine ? (
                   <span className="tnum text-[12px] text-fg4">{engine.scores[route.id]}</span>

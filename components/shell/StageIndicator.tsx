@@ -1,6 +1,7 @@
 "use client";
 
 import { useUI } from "@/components/LangContext";
+import { Dot } from "@/components/ui/Dot";
 
 /** Where the film is: 03 / 10, the state's name, and one line about it. */
 export function StageIndicator({
@@ -22,21 +23,25 @@ export function StageIndicator({
 
   return (
     <div
-      className="edge-with-narrator pointer-events-none fixed inset-x-0 top-[72px] z-30 flex justify-center px-6"
+      className="edge-with-narrator pointer-events-none fixed inset-x-0 z-30 flex justify-center px-6"
       style={{
+        top: "calc(var(--titlebar) + 18px)",
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : "translateY(-6px)",
         transition: "opacity var(--d-std) var(--ease), transform var(--d-std) var(--ease)",
       }}
       aria-hidden={!visible}
     >
-      <div className="glass w-full max-w-[560px] rounded-md2 px-5 py-3.5">
+      <div className="card w-full max-w-[560px] px-5 py-3.5">
         <div className="flex items-baseline gap-4">
           <span className="tnum text-[11px] text-fg4">
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
-          <span className="eyebrow" style={{ color: "var(--accent)" }}>
-            {name}
+          <span className="flex items-center gap-2.5">
+            <Dot state="active" />
+            <span className="eyebrow" style={{ color: "var(--text)" }}>
+              {name}
+            </span>
           </span>
         </div>
         {blurb ? <p className="mt-2 text-[12.5px] leading-snug text-fg2">{blurb}</p> : null}

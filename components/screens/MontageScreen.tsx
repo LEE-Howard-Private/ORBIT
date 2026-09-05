@@ -1,6 +1,7 @@
 "use client";
 
 import { useUI } from "@/components/LangContext";
+import { Dot } from "@/components/ui/Dot";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stage } from "@/components/ui/Stage";
 import { ntd } from "@/lib/format";
@@ -62,19 +63,20 @@ export function MontageScreen({
                 <span className="text-right">
                   {decided ? (
                     <span className="animate-sweepIn block">
-                      <span className="tnum block text-[clamp(22px,2.6vw,30px)] leading-none text-fg">
+                      <span className="stat block text-[clamp(24px,2.9vw,34px)] text-fg">
                         {s.analysis.necessity_score}
                         <span className="text-fg4">%</span>
                       </span>
-                      <span
-                        className="mt-2.5 block text-[11px] tracking-[0.18em]"
-                        style={{ color: focused ? "var(--accent)" : "var(--text-3)" }}
-                      >
-                        {ui.routeLabel[s.analysis.route]}
+                      <span className="mt-2.5 flex items-center justify-end gap-2 text-[11px] tracking-[0.18em]">
+                        <Dot state={focused ? "accent" : "idle"} />
+                        <span style={{ color: focused ? "var(--text)" : "var(--text-3)" }}>
+                          {ui.routeLabel[s.analysis.route]}
+                        </span>
                       </span>
                     </span>
                   ) : (
-                    <span className="block text-[11px] tracking-[0.18em] text-fg4 animate-breathe">
+                    <span className="flex items-center justify-end gap-2 text-[11px] tracking-[0.18em] text-fg4">
+                      <Dot state="active" />
                       {ui.montage.routing}
                     </span>
                   )}

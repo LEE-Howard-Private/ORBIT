@@ -4,13 +4,13 @@ import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Children stay mounted so nothing reflows mid-sequence; they arrive by
- * opacity + a short lift + a blur that resolves. One motion, everywhere.
+ * opacity + an 8px lift, slowly. One motion, everywhere.
  */
 export function Reveal({
   show,
   delay = 0,
-  y = 10,
-  blur = 5,
+  y = 8,
+  blur = 0,
   duration = 620,
   className = "",
   style,
@@ -31,7 +31,7 @@ export function Reveal({
       style={{
         opacity: show ? 1 : 0,
         transform: show ? "none" : `translateY(${y}px)`,
-        filter: show ? "blur(0px)" : `blur(${blur}px)`,
+        filter: blur ? (show ? "blur(0px)" : `blur(${blur}px)`) : undefined,
         transition: `opacity ${duration}ms var(--ease), transform ${duration}ms var(--ease), filter ${duration}ms var(--ease)`,
         transitionDelay: `${delay}ms`,
         pointerEvents: show ? undefined : "none",

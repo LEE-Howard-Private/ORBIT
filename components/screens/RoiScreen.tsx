@@ -66,7 +66,7 @@ export function RoiScreen({
       </div>
 
       {roi.transform ? (
-        <Reveal show={step >= 2} delay={120} y={16} blur={8} duration={900}>
+        <Reveal show={step >= 2} delay={120} y={14} blur={0} duration={900}>
           <div className="mt-16 flex flex-wrap items-baseline gap-x-6 gap-y-2">
             <span className="display text-[clamp(34px,5.4vw,64px)] leading-none text-fg3">
               {roi.transform.from}
@@ -88,9 +88,7 @@ export function RoiScreen({
       <Reveal show={step >= 2} delay={520}>
         <div className="mt-10 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <div className="tnum text-[clamp(26px,3.4vw,38px)] leading-none text-accent">
-              {ntd(saving)}
-            </div>
+            <div className="stat text-[clamp(30px,3.8vw,42px)] text-accentText">{ntd(saving)}</div>
             <div className="mt-2.5 text-[12px] text-fg3">{ui.roi.saving}</div>
           </div>
           {!autoplay ? (

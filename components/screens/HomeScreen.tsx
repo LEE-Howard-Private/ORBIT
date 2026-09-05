@@ -35,9 +35,9 @@ export function HomeScreen({
   const submitting = autoplay && step >= 2;
 
   return (
-    <div className="mx-auto flex min-h-[100svh] w-full max-w-[820px] flex-col justify-center px-6 pb-28 pt-28 md:px-8">
+    <div className="mx-auto flex min-h-[var(--screen-h)] w-full max-w-[820px] flex-col justify-center px-6 pb-28 pt-28 md:px-8">
       <Reveal show={!submitting} duration={520}>
-        <h1 className="display mx-auto max-w-[15ch] text-center text-[clamp(38px,6.4vw,76px)] text-fg">
+        <h1 className="display mx-auto max-w-[16ch] text-center text-[clamp(34px,5.2vw,62px)] text-fg">
           {ui.hero.headline}
         </h1>
       </Reveal>

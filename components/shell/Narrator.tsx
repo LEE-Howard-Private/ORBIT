@@ -3,15 +3,16 @@
 import { useEffect, useRef } from "react";
 import { useUI } from "@/components/LangContext";
 import { Chevron, Mark } from "@/components/ui/Icons";
+import { Dot } from "@/components/ui/Dot";
 import type { NarratorLine } from "@/lib/narration";
 
 function Line({ line, ui }: { line: NarratorLine; ui: ReturnType<typeof useUI> }) {
   return (
     <div className="animate-sweepIn">
       {line.status ? (
-        <div className="mb-3 flex items-center gap-2">
-          <span className="h-1 w-1 rounded-full bg-accent animate-breathe" />
-          <span className="eyebrow" style={{ color: "var(--accent)" }}>
+        <div className="mb-3 flex items-center gap-2.5">
+          <Dot state="active" />
+          <span className="eyebrow" style={{ color: "var(--text-2)" }}>
             {line.status}
           </span>
         </div>
@@ -30,8 +31,8 @@ function Line({ line, ui }: { line: NarratorLine; ui: ReturnType<typeof useUI> }
       {line.items?.length ? (
         <ul className="mt-3 space-y-1.5">
           {line.items.map((item) => (
-            <li key={item} className="flex gap-2.5 text-[12.5px] leading-relaxed text-fg3">
-              <span className="mt-[9px] h-px w-2 shrink-0" style={{ background: "var(--text-4)" }} />
+            <li key={item} className="flex gap-2.5 text-[12.5px] leading-[1.6] text-fg3">
+              <Dot state="idle" className="mt-[7px]" />
               <span>{item}</span>
             </li>
           ))}
@@ -55,7 +56,8 @@ function Line({ line, ui }: { line: NarratorLine; ui: ReturnType<typeof useUI> }
       {line.route ? (
         <div className="mt-1 border-t border-line pt-5">
           <div className="eyebrow mb-2">{ui.trace.recommendation}</div>
-          <div className="text-[17px] tracking-[0.04em]" style={{ color: "var(--accent)" }}>
+          <div className="flex items-center gap-2.5 text-[16px] tracking-[0.04em] text-fg">
+            <Dot state="accent" />
             {ui.routeLabel[line.route]}
           </div>
         </div>
@@ -113,7 +115,7 @@ export function Narrator({
       </button>
 
       <aside
-        className={`glass fixed z-40 flex flex-col border-r-0 transition-transform duration-500 ease-cine lg:inset-y-0 lg:right-0 lg:w-[352px] ${
+        className={`panel fixed z-40 flex flex-col transition-transform duration-500 ease-cine lg:bottom-0 lg:right-0 lg:top-[var(--titlebar)] lg:w-[352px] ${
           open ? "translate-y-0 lg:translate-x-0" : "translate-y-full lg:translate-y-0 lg:translate-x-full"
         }`}
         aria-hidden={!open}
