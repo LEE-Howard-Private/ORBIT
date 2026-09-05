@@ -16,8 +16,8 @@ export function Stage({
     <div
       className={`mx-auto w-full px-6 md:px-10 ${wide ? "max-w-[1120px]" : "max-w-[920px]"} ${
         center
-          ? "flex min-h-[var(--screen-h)] flex-col justify-center pb-36 pt-24"
-          : "pb-40 pt-24 md:pt-28"
+          ? "flex min-h-[100svh] flex-col justify-center pb-28 pt-28"
+          : "pb-32 pt-28 md:pt-32"
       }`}
     >
       {eyebrow ? <div className="eyebrow mb-8">{eyebrow}</div> : null}

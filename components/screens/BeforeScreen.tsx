@@ -56,10 +56,10 @@ export function BeforeScreen({ scenario, step }: { scenario: Scenario; step: num
               <Reveal key={item.label} show={step >= 2} delay={140 + i * 110}>
                 <div>
                   <div
-                    className="stat text-[clamp(28px,3.6vw,42px)]"
+                    className="tnum text-[clamp(26px,3.2vw,38px)] leading-none"
                     style={{
                       color: item.label.toLowerCase().includes("cost") || item.label.includes("成本")
-                        ? "var(--accent-text)"
+                        ? "var(--accent)"
                         : "var(--text)",
                     }}
                   >

@@ -49,7 +49,7 @@ export function Atmosphere({ intensity = 1 }: { intensity?: number }) {
           className="absolute left-[6%] top-[-14%] h-[62vw] w-[62vw] animate-driftA rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 40% 40%, rgba(99,102,241,0.16), rgba(99,102,241,0.05) 45%, transparent 72%)",
+              "radial-gradient(circle at 40% 40%, rgba(236,212,172,0.2), rgba(236,212,172,0.06) 45%, transparent 72%)",
             filter: "blur(60px)",
           }}
         />
@@ -57,7 +57,7 @@ export function Atmosphere({ intensity = 1 }: { intensity?: number }) {
           className="absolute right-[-10%] top-[18%] h-[52vw] w-[52vw] animate-driftB rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), rgba(255,255,255,0.015) 50%, transparent 74%)",
+              "radial-gradient(circle at 50% 50%, rgba(158,180,214,0.16), rgba(158,180,214,0.04) 50%, transparent 74%)",
             filter: "blur(70px)",
           }}
         />
@@ -65,7 +65,7 @@ export function Atmosphere({ intensity = 1 }: { intensity?: number }) {
           className="absolute bottom-[-24%] left-[24%] h-[58vw] w-[58vw] animate-driftA rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.045), transparent 68%)",
+              "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.09), transparent 68%)",
             filter: "blur(80px)",
             animationDelay: "-12s",
           }}
@@ -76,7 +76,7 @@ export function Atmosphere({ intensity = 1 }: { intensity?: number }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(130% 100% at 50% -8%, transparent 30%, rgba(8,8,10,0.5) 72%, rgba(8,8,10,0.9) 100%)",
+            "radial-gradient(130% 100% at 50% -6%, transparent 34%, rgba(7,7,9,0.42) 74%, rgba(7,7,9,0.82) 100%)",
         }}
       />
     </div>

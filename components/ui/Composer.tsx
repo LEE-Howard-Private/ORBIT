@@ -44,8 +44,9 @@ export function Composer({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="card-lg relative w-full"
+      className="glass relative w-full"
       style={{
+        borderRadius: "var(--r-lg)",
         borderColor: focused ? "var(--line-strong)" : undefined,
         boxShadow: focused
           ? "0 1px 0 0 rgba(255,255,255,0.07) inset, 0 40px 90px -60px rgba(0,0,0,0.95)"
@@ -63,7 +64,7 @@ export function Composer({
             {value}
             {caret ? (
               <span
-                className="ml-[2px] inline-block h-[19px] w-[2px] translate-y-[3px] bg-accent align-middle animate-breathe"
+                className="ml-[2px] inline-block h-[19px] w-[1.5px] translate-y-[3px] bg-accent align-middle animate-breathe"
                 aria-hidden
               />
             ) : null}
@@ -98,9 +99,8 @@ export function Composer({
           aria-label="Analyze"
           className="flex h-9 w-9 items-center justify-center rounded-full transition-all duration-150"
           style={{
-            background: ready ? "var(--accent)" : "var(--surface-2)",
-            color: ready ? "#fff" : "var(--text-4)",
-            boxShadow: ready ? "0 8px 22px -10px rgba(99,102,241,0.9)" : "none",
+            background: ready ? "var(--text)" : "var(--surface-2)",
+            color: ready ? "#0b0b0d" : "var(--text-4)",
             cursor: ready ? "pointer" : "not-allowed",
           }}
         >

@@ -19,11 +19,6 @@ const config: Config = {
         accent: "var(--accent)",
         accentQuiet: "var(--accent-quiet)",
         accentLine: "var(--accent-line)",
-        accentText: "var(--accent-text)",
-        stIdle: "var(--st-idle)",
-        stActive: "var(--st-active)",
-        stDone: "var(--st-done)",
-        stAlert: "var(--st-alert)",
       },
       borderColor: {
         DEFAULT: "var(--line)",
@@ -35,9 +30,10 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       transitionTimingFunction: {
-        cine: "cubic-bezier(0.16, 1, 0.3, 1)",
+        cine: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       keyframes: {
         driftA: {
@@ -49,19 +45,19 @@ const config: Config = {
           "50%": { transform: "translate3d(-4%,3%,0) scale(1)" },
         },
         breathe: {
-          "0%,100%": { opacity: "0.45" },
-          "50%": { opacity: "1" },
+          "0%,100%": { opacity: "0.35" },
+          "50%": { opacity: "0.8" },
         },
         sweepIn: {
-          "0%": { opacity: "0", transform: "translateY(8px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+          "0%": { opacity: "0", transform: "translateY(10px)", filter: "blur(6px)" },
+          "100%": { opacity: "1", transform: "translateY(0)", filter: "blur(0)" },
         },
       },
       animation: {
         driftA: "driftA 34s cubic-bezier(0.4,0,0.2,1) infinite",
         driftB: "driftB 46s cubic-bezier(0.4,0,0.2,1) infinite",
         breathe: "breathe 2.4s ease-in-out infinite",
-        sweepIn: "sweepIn 760ms cubic-bezier(0.16,1,0.3,1) both",
+        sweepIn: "sweepIn 700ms cubic-bezier(0.22,1,0.36,1) both",
       },
     },
   },

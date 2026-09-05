@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { useUI } from "@/components/LangContext";
-import { ArrowRight, Chevron } from "@/components/ui/Icons";
-import { Dot } from "@/components/ui/Dot";
+import { ArrowRight, Check, Chevron, Spinner } from "@/components/ui/Icons";
 import { Reveal } from "@/components/ui/Reveal";
 import { Stage } from "@/components/ui/Stage";
 import type { Scenario } from "@/lib/types";
@@ -39,15 +38,15 @@ export function BriefScreen({
     <Stage wide>
       <Reveal show={step === 0}>
         <div className="flex items-center gap-2.5 text-[13px] text-fg3">
-          <Dot state="active" />
+          <Spinner className="h-3.5 w-3.5" />
           {ui.brief.eyebrow}
         </div>
       </Reveal>
 
       <Reveal show={shown}>
         <div className="flex items-center gap-2.5">
-          <Dot state="done" />
-          <span className="eyebrow" style={{ color: "var(--text-2)" }}>
+          <span className="h-1 w-1 rounded-full bg-accent" />
+          <span className="eyebrow" style={{ color: "var(--accent)" }}>
             {d.status ?? ui.brief.eyebrow}
           </span>
         </div>
@@ -66,16 +65,11 @@ export function BriefScreen({
           ) : null}
           <div className="flex flex-wrap gap-x-12 gap-y-6">
             <div>
-              <div className="stat text-[clamp(28px,3.4vw,38px)] text-fg">
-                {a.confidence}<span className="text-fg3">%</span>
-              </div>
+              <div className="tnum text-[22px] leading-none text-fg">{a.confidence}%</div>
               <div className="mt-2 text-[12px] text-fg3">{ui.brief.confidence}</div>
             </div>
             <div>
-              <div className="flex items-center gap-2.5 text-[15px] leading-none text-fg">
-              <Dot state="accent" />
-              {ui.routeLabel[a.route]}
-            </div>
+              <div className="text-[15px] leading-none text-fg">{ui.routeLabel[a.route]}</div>
               <div className="mt-2 text-[12px] text-fg3">
                 {scenario.stakeholders.length} {ui.brief.stakeholders} · {a.questions.length}{" "}
                 {ui.brief.openQuestions}
@@ -135,7 +129,6 @@ export function BriefScreen({
 
       {d.meeting_brief ? (
         <Reveal show={shown} delay={440} className="mt-14">
-          <div className="card-lg px-6 py-8 md:px-8">
           <div className="eyebrow mb-6">{ui.meetingBrief.title}</div>
 
           <p className="max-w-[62ch] text-[16px] leading-[1.7] text-fg">
@@ -154,8 +147,8 @@ export function BriefScreen({
                   <div className="eyebrow mb-3">{group.label}</div>
                   <ul className="space-y-2">
                     {group.items.map((item) => (
-                      <li key={item} className="flex gap-3 text-[13.5px] leading-[1.6] text-fg2">
-                        <Dot state="idle" className="mt-[8px]" />
+                      <li key={item} className="flex gap-2.5 text-[13.5px] leading-relaxed text-fg2">
+                        <span className="mt-[9px] h-px w-2.5 shrink-0" style={{ background: "var(--text-4)" }} />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -163,7 +156,6 @@ export function BriefScreen({
                 </div>
               </Reveal>
             ))}
-          </div>
           </div>
         </Reveal>
       ) : null}
@@ -182,16 +174,16 @@ export function BriefScreen({
       <Reveal show={shown} delay={560} className="mt-14">
         {approved ? (
           <div>
-            <div className="flex items-center gap-2.5 text-[13.5px] text-fg">
-              <Dot state="done" />
+            <div className="flex items-center gap-2.5 text-[13.5px] text-accent">
+              <Check className="h-4 w-4" />
               {ui.brief.approved} · {d.owner}
             </div>
             {d.post_approval?.length ? (
               <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
                 {d.post_approval.map((item, i) => (
                   <Reveal key={item} show={approved} delay={200 + i * 130}>
-                    <li className="flex items-start gap-3 text-[13px] leading-[1.6] text-fg3">
-                      <Dot state="done" className="mt-[8px]" />
+                    <li className="flex items-start gap-2.5 text-[13px] leading-relaxed text-fg3">
+                      <Check className="mt-[3px] h-3 w-3 shrink-0 text-fg4" />
                       {item}
                     </li>
                   </Reveal>

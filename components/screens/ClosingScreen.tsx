@@ -14,8 +14,8 @@ export function ClosingScreen({ scenario, step }: { scenario: Scenario; step: nu
   const tail = parts.slice(1).join("");
 
   return (
-    <div className="mx-auto flex min-h-[var(--screen-h)] w-full max-w-[880px] flex-col items-center justify-center px-6 text-center">
-      <Reveal show={step >= 0} duration={1000} y={12} blur={0}>
+    <div className="mx-auto flex min-h-[100svh] w-full max-w-[880px] flex-col items-center justify-center px-6 text-center">
+      <Reveal show={step >= 0} duration={1000} y={14} blur={8}>
         <p
           className={`display text-fg ${
             lang === "zh"
