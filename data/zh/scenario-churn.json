@@ -17,7 +17,7 @@
     "lines": [
       "有些需求根本不是決策，只是一個問題，卻掛上了六份行事曆。",
       "6 個人、30 分鐘，只為了讀出一個系統早就存好的數字。",
-      "SYNCLESS 在任何人打開行事曆之前就先回答它。"
+      "ORBIT 在任何人打開行事曆之前就先回答它。"
     ]
   },
   "before": {
@@ -80,7 +80,7 @@
       "沒有任何決策要做，因此不需要指派負責人。",
       "資訊充足度 98%：三個支援系統的數字互相吻合。",
       "6 人 × 30 分鐘的混合同步時間，成本會是 NT$2,700。",
-      "SYNCLESS 直接回答並附上來源，讓數字可以被查證，而不是被討論。"
+      "ORBIT 直接回答並附上來源，讓數字可以被查證，而不是被討論。"
     ],
     "estimated_cost": 2700,
     "cost_basis": "6 人 × 0.5 小時 × NT$900 混合時薪 = NT$2,700",
@@ -133,7 +133,7 @@
         {
           "label": "決策負責人",
           "value": "不需要",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         }
       ],
       "post_approval": [
@@ -168,7 +168,7 @@
       "code": "01",
       "name": "AI 直接處理",
       "tagline": "不需要任何人回答",
-      "description": "SYNCLESS 直接從既有系統取得答案並記錄下來。",
+      "description": "ORBIT 直接從既有系統取得答案並記錄下來。",
       "selectedBecause": "資訊充足度 98%，會議必要性僅 6% — 這個答案是已儲存的事實，不是判斷。",
       "signals": [
         {
@@ -196,7 +196,7 @@
       "code": "02",
       "name": "非同步優先",
       "tagline": "收集、彙整、決策",
-      "description": "SYNCLESS 向負責人提出針對性提問，彙整回覆後草擬決策。",
+      "description": "ORBIT 向負責人提出針對性提問，彙整回覆後草擬決策。",
       "rejectedBecause": "為了系統早就存好的數字去問三個人，只會增加延遲，不會增加準確度。",
       "signals": [
         {
@@ -357,7 +357,7 @@
   },
   "closing": {
     "statement": "我們不管理會議。我們消滅那些你的公司從來不需要的會議。",
-    "wordmark": "SYNCLESS",
-    "positioning": "為現代團隊打造的 AI 決策層"
+    "wordmark": "ORBIT",
+    "positioning": "Optimized Routing for Better Intelligent Teamwork"
   }
 }

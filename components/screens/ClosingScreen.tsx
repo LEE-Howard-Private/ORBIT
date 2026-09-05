@@ -33,7 +33,7 @@ export function ClosingScreen({ scenario, step }: { scenario: Scenario; step: nu
         <div className="mt-20 flex flex-col items-center">
           <Mark className="h-6 w-6 text-fg2" />
           <div className="mt-6 text-[clamp(18px,2.4vw,26px)] font-medium tracking-[0.42em] text-fg">
-            SYNCLESS
+            ORBIT
           </div>
           <div className="mt-5 text-[12px] tracking-[0.2em] text-fg3">{c.positioning}</div>
         </div>

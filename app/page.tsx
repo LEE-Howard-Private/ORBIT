@@ -69,9 +69,9 @@ export default function Page() {
 
   useEffect(() => {
     try {
-      const panel = window.localStorage.getItem("syncless-narrator");
+      const panel = window.localStorage.getItem("orbit-narrator");
       if (panel === "closed") setNarratorOpen(false);
-      const saved = window.localStorage.getItem("syncless-lang");
+      const saved = window.localStorage.getItem("orbit-lang");
       if (saved === "zh" || saved === "en") {
         setLang(saved);
         setScenario((current) => matchScenario(current, saved));
@@ -87,7 +87,7 @@ export default function Page() {
       setScenario((current) => matchScenario(current, next));
       setInput((current) => (current.trim() ? matchScenario(scenario, next).request : current));
       try {
-        window.localStorage.setItem("syncless-lang", next);
+        window.localStorage.setItem("orbit-lang", next);
       } catch {
         /* not persisting is harmless */
       }
@@ -289,7 +289,7 @@ export default function Page() {
   const toggleNarrator = useCallback(() => {
     setNarratorOpen((v) => {
       try {
-        window.localStorage.setItem("syncless-narrator", v ? "closed" : "open");
+        window.localStorage.setItem("orbit-narrator", v ? "closed" : "open");
       } catch {
         /* not persisting is harmless */
       }

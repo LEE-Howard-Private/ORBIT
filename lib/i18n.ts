@@ -229,7 +229,7 @@ const en: UIStrings = {
   route: {
     eyebrow: "Route",
     considered: "Also considered",
-    preview: "The meeting SYNCLESS would have booked",
+    preview: "The meeting ORBIT would have booked",
     participants: "Participants",
     duration: "Duration",
     goal: "Decision",
@@ -447,7 +447,7 @@ const zh: UIStrings = {
   route: {
     eyebrow: "路徑",
     considered: "同時評估過",
-    preview: "SYNCLESS 原本會排的那場會",
+    preview: "ORBIT 原本會排的那場會",
     participants: "參與人數",
     duration: "會議長度",
     goal: "決策目標",

@@ -1,8 +1,8 @@
-# SYNCLESS — AI Decision Layer for Modern Teams
+# ORBIT — Optimized Routing for Better Intelligent Teamwork
 
 > Meetings are not the problem. **Synchronization is.**
 
-SYNCLESS is an AI decision-routing layer. It takes a work or meeting request, scores how much
+ORBIT is an AI decision-routing layer. It takes a work or meeting request, scores how much
 of it actually needs synchronous time, prices the meeting that was asked for, and routes the
 request to one of three paths — **AI HANDLES IT**, **ASYNC FIRST**, or **MEETING**. On the async
 path it asks the named owners directly, collects the replies, synthesizes them and produces an
@@ -20,7 +20,7 @@ demo scenario is bundled in `data/demo-scenario.json` and plays end to end offli
 
 ## Three scenarios, three routes
 
-AI first → async second → meeting when necessary. SYNCLESS is not an anti-meeting product; it is a
+AI first → async second → meeting when necessary. ORBIT is not an anti-meeting product; it is a
 right-synchronization product. Three requests are bundled and all three run offline:
 
 | Request | Necessity | Route | Outcome |
@@ -29,7 +29,7 @@ right-synchronization product. Three requests are bundled and all three run offl
 | Align Marketing, Product and Sales on the Q4 launch date | 38% | **ASYNC FIRST** | October 15 confirmed · 91% confidence · NT$11,250 saved |
 | Should we delay the product launch by three months? | 89% | **MEETING** | Conflict found → 12→4 people, 120→30 min, positions pre-collected |
 
-The MEETING case is the one that proves the point: SYNCLESS runs async collection first, finds that
+The MEETING case is the one that proves the point: ORBIT runs async collection first, finds that
 Sales and Engineering reached opposing conclusions from the same evidence, and escalates — sizing
 the meeting down rather than avoiding it.
 
@@ -76,8 +76,8 @@ playback cannot show a state the product is not actually in.
 | — | Before | What happens to this request today: CEO request → Slack → calendar → 10 people → 90 minutes → NT$13,500 |
 | — | Routing | Three requests, three verdicts — the router deciding, before the deep dive |
 | 01 | Request | What problem is the user trying to solve? |
-| 02 | Analysis | Why does SYNCLESS recommend this route? (necessity · coordination cost · sufficiency · complexity · conflict · information sources) |
-| 03 | Route | What does SYNCLESS do next? (WORK REQUEST → SYNCLESS AI → AI / ASYNC / MEETING) |
+| 02 | Analysis | Why does ORBIT recommend this route? (necessity · coordination cost · sufficiency · complexity · conflict · information sources) |
+| 03 | Route | What does ORBIT do next? (WORK REQUEST → ORBIT AI → AI / ASYNC / MEETING) |
 | 04 | Async | What information did it collect? (3 stakeholders · 3 targeted questions · 1 decision) |
 | 05 | Brief | What decision did it produce? (October 15 · 91% confidence · Decision Ready) |
 | 06 | Result | What did the company gain? (90-minute meeting → 15-minute review · NT$11,250 saved) |
@@ -92,7 +92,7 @@ Chinese as the default, change the initial `useState<Lang>("en")` in `app/page.t
 
 ## Decision Narrator
 
-A side panel that says, in plain language, what SYNCLESS is doing and why — expanded by default,
+A side panel that says, in plain language, what ORBIT is doing and why — expanded by default,
 collapsible, and remembered per browser. On narrow screens it becomes a bottom drawer.
 
 It is **derived, never authored**: `lib/narration.ts` is a pure function of the stage machine's

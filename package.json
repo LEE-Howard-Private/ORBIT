@@ -1,8 +1,8 @@
 {
-  "name": "syncless",
+  "name": "orbit",
   "version": "1.0.0",
   "private": true,
-  "description": "SYNCLESS — AI Decision Layer for Modern Teams",
+  "description": "ORBIT — Optimized Routing for Better Intelligent Teamwork",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

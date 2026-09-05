@@ -1,7 +1,7 @@
 import type { RouteId } from "./types";
 
 /**
- * SYNCLESS decision engine.
+ * ORBIT decision engine.
  *
  * The model extracts factors; this file decides. Every route score is a
  * weighted sum of named factors with the weights written out below, so a

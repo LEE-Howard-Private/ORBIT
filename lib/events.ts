@@ -1,4 +1,4 @@
-export type SynclessEvent =
+export type OrbitEvent =
   | "analysisStarted"
   | "analysisStepCompleted"
   | "routeDetermined"
@@ -6,7 +6,7 @@ export type SynclessEvent =
   | "responseReceived"
   | "decisionReady";
 
-type Handler = (event: SynclessEvent, detail?: Record<string, unknown>) => void;
+type Handler = (event: OrbitEvent, detail?: Record<string, unknown>) => void;
 
 const handlers = new Set<Handler>();
 
@@ -15,12 +15,12 @@ const handlers = new Set<Handler>();
  * fully usable in silence — but a cinematic build can subscribe and play a
  * cue without any screen knowing about audio.
  */
-export function onSyncless(handler: Handler): () => void {
+export function onOrbit(handler: Handler): () => void {
   handlers.add(handler);
   return () => handlers.delete(handler);
 }
 
-export function emit(event: SynclessEvent, detail?: Record<string, unknown>): void {
+export function emit(event: OrbitEvent, detail?: Record<string, unknown>): void {
   handlers.forEach((h) => {
     try {
       h(event, detail);
@@ -29,6 +29,6 @@ export function emit(event: SynclessEvent, detail?: Record<string, unknown>): vo
     }
   });
   if (typeof window !== "undefined") {
-    window.dispatchEvent(new CustomEvent(`syncless:${event}`, { detail }));
+    window.dispatchEvent(new CustomEvent(`orbit:${event}`, { detail }));
   }
 }

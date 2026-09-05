@@ -17,7 +17,7 @@
     "lines": [
       "Some requests are not decisions at all. They are questions with six calendars attached.",
       "6 people. 30 minutes. To read a number one system already holds.",
-      "SYNCLESS answers those before anyone opens a calendar."
+      "ORBIT answers those before anyone opens a calendar."
     ]
   },
   "before": {
@@ -80,7 +80,7 @@
       "No decision is being made, so no accountable owner is required.",
       "Information sufficiency is 98%: all three supporting systems agree.",
       "6 participants × 30 minutes of blended synchronous time would cost NT$2,700.",
-      "SYNCLESS answers directly and cites the source, so the number can be checked rather than debated."
+      "ORBIT answers directly and cites the source, so the number can be checked rather than debated."
     ],
     "estimated_cost": 2700,
     "cost_basis": "6 participants × 0.5 h × NT$900 blended hourly = NT$2,700",
@@ -133,7 +133,7 @@
         {
           "label": "Decision Owner",
           "value": "None required",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         }
       ],
       "post_approval": [
@@ -168,7 +168,7 @@
       "code": "01",
       "name": "AI HANDLES IT",
       "tagline": "No human input required",
-      "description": "SYNCLESS answers directly from existing systems and logs the answer.",
+      "description": "ORBIT answers directly from existing systems and logs the answer.",
       "selectedBecause": "98% information sufficiency with 6% meeting necessity — the answer is a stored fact, not a judgement.",
       "signals": [
         {
@@ -196,7 +196,7 @@
       "code": "02",
       "name": "ASYNC FIRST",
       "tagline": "Collect, synthesize, decide",
-      "description": "SYNCLESS asks the owners targeted questions, synthesizes the answers and drafts the decision.",
+      "description": "ORBIT asks the owners targeted questions, synthesizes the answers and drafts the decision.",
       "rejectedBecause": "Asking three people for a number the systems already hold would add latency, not accuracy.",
       "signals": [
         {
@@ -357,7 +357,7 @@
   },
   "closing": {
     "statement": "We don't manage meetings. We eliminate the meetings your company never needed.",
-    "wordmark": "SYNCLESS",
-    "positioning": "AI Decision Layer for Modern Teams"
+    "wordmark": "ORBIT",
+    "positioning": "Optimized Routing for Better Intelligent Teamwork"
   }
 }

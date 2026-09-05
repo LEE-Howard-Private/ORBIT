@@ -35,7 +35,7 @@ export interface Decision {
   recommendation: string;
   /** e.g. "Decision Ready" — the state the brief hands back to the user. */
   status?: string;
-  /** What SYNCLESS does the moment the brief is approved — closes the loop. */
+  /** What ORBIT does the moment the brief is approved — closes the loop. */
   post_approval?: string[];
   /** Present when the route is MEETING: what the room is for. */
   meeting_brief?: MeetingBrief;
@@ -133,7 +133,7 @@ export interface Scenario {
   submittedAt: string;
   request: string;
   intro: { headline: string; subhead: string; lines: string[] };
-  /** The workflow this request would have triggered without SYNCLESS. */
+  /** The workflow this request would have triggered without ORBIT. */
   before: {
     chain: string[];
     cost: { label: string; value: string }[];

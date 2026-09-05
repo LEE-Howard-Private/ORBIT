@@ -19,9 +19,9 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "SYNCLESS — AI Decision Layer",
+  title: "ORBIT — Optimized Routing for Better Intelligent Teamwork",
   description:
-    "Meetings are not the problem. Unnecessary synchronization is. SYNCLESS routes every work request to the cheapest path to a decision.",
+    "Meetings are not the problem. Unnecessary synchronization is. ORBIT routes every work request to the cheapest path to a decision.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

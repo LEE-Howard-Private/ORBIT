@@ -17,7 +17,7 @@
     "lines": [
       "Some decisions genuinely need a room — and a decision layer has to be able to say so.",
       "Revenue, product quality, customer commitments and engineering capacity all pull in different directions.",
-      "SYNCLESS does not avoid this meeting. It sizes it, and walks in prepared."
+      "ORBIT does not avoid this meeting. It sizes it, and walks in prepared."
     ]
   },
   "before": {
@@ -86,7 +86,7 @@
       "Sales, Engineering and Finance returned directly opposing conclusions. Async collection cannot reconcile them.",
       "Stakeholder conflict is high: revenue, product quality, customer commitments and engineering capacity trade against each other.",
       "The decision is irreversible within the fiscal year, which raises the bar for synchronous time.",
-      "SYNCLESS still sizes the meeting down: 4 decision-makers, 30 minutes, with every position pre-collected."
+      "ORBIT still sizes the meeting down: 4 decision-makers, 30 minutes, with every position pre-collected."
     ],
     "estimated_cost": 21600,
     "cost_basis": "12 participants × 2 h × NT$900 blended hourly = NT$21,600",
@@ -120,7 +120,7 @@
     "decision": {
       "title": "Ship Now vs Delay Three Months",
       "status": "Meeting Required",
-      "recommendation": "This one needs a room. Sales, Engineering and Finance reached conflicting conclusions from the same evidence, and the call is irreversible inside the fiscal year. SYNCLESS has sized the meeting to the 4 decision-makers and 30 minutes, with all three positions collected in advance so the time is spent deciding, not briefing.",
+      "recommendation": "This one needs a room. Sales, Engineering and Finance reached conflicting conclusions from the same evidence, and the call is irreversible inside the fiscal year. ORBIT has sized the meeting to the 4 decision-makers and 30 minutes, with all three positions collected in advance so the time is spent deciding, not briefing.",
       "launch_date": "",
       "product_status": "",
       "constraint": "Irreversible within the fiscal year",
@@ -129,27 +129,27 @@
         {
           "label": "Decision Required",
           "value": "Ship now vs delay 3 months",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "Participants",
           "value": "CEO, Product, Engineering, Sales",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "Duration",
           "value": "30 minutes",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "The conflict",
           "value": "Revenue vs product quality",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "Decision Owner",
           "value": "CEO",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         }
       ],
       "post_approval": [
@@ -210,7 +210,7 @@
       "code": "01",
       "name": "AI HANDLES IT",
       "tagline": "No human input required",
-      "description": "SYNCLESS answers directly from existing systems and logs the answer.",
+      "description": "ORBIT answers directly from existing systems and logs the answer.",
       "rejectedBecause": "This is a judgement about risk appetite, not a fact that can be retrieved from a system.",
       "signals": [
         {
@@ -237,7 +237,7 @@
       "code": "02",
       "name": "ASYNC FIRST",
       "tagline": "Collect, synthesize, decide",
-      "description": "SYNCLESS asks the owners targeted questions, synthesizes the answers and drafts the decision.",
+      "description": "ORBIT asks the owners targeted questions, synthesizes the answers and drafts the decision.",
       "rejectedBecause": "Async collection ran first and returned an unresolved conflict — Sales, Engineering and Finance cannot be reconciled in writing.",
       "signals": [
         {
@@ -393,7 +393,7 @@
     "savingLabel": "Estimated saving",
     "saving": "NT$19,800",
     "savingAmount": 19800,
-    "footnote": "SYNCLESS is not anti-meeting. It is anti-unnecessary-synchronization.",
+    "footnote": "ORBIT is not anti-meeting. It is anti-unnecessary-synchronization.",
     "transform": {
       "from": "120 MIN",
       "to": "30 MIN"
@@ -401,7 +401,7 @@
   },
   "closing": {
     "statement": "We don't manage meetings. We eliminate the meetings your company never needed.",
-    "wordmark": "SYNCLESS",
-    "positioning": "AI Decision Layer for Modern Teams"
+    "wordmark": "ORBIT",
+    "positioning": "Optimized Routing for Better Intelligent Teamwork"
   }
 }

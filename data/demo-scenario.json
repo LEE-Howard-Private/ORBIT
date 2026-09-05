@@ -17,7 +17,7 @@
     "lines": [
       "A 50-person SaaS company is preparing its Q4 launch. The CEO needs one date agreed.",
       "So the request becomes a meeting — and the meeting becomes three days of coordination.",
-      "SYNCLESS asks a different question first: how much of this actually needs everyone in a room?"
+      "ORBIT asks a different question first: how much of this actually needs everyone in a room?"
     ]
   },
   "before": {
@@ -143,7 +143,7 @@
         {
           "label": "Decision Owner",
           "value": "Head of Product",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         }
       ],
       "post_approval": [
@@ -180,7 +180,7 @@
       "code": "01",
       "name": "AI HANDLES IT",
       "tagline": "No human input required",
-      "description": "SYNCLESS answers directly from existing systems and logs the answer.",
+      "description": "ORBIT answers directly from existing systems and logs the answer.",
       "rejectedBecause": "Two inputs — the realistic launch date and the customer conflict check — require a named human to stand behind them.",
       "signals": [
         {
@@ -207,7 +207,7 @@
       "code": "02",
       "name": "ASYNC FIRST",
       "tagline": "Collect, synthesize, decide",
-      "description": "SYNCLESS asks the three owners targeted questions, synthesizes the answers and drafts the decision.",
+      "description": "ORBIT asks the three owners targeted questions, synthesizes the answers and drafts the decision.",
       "selectedBecause": "82% information sufficiency with only 38% meeting necessity — the answers exist and need collecting, not debating.",
       "signals": [
         {
@@ -378,7 +378,7 @@
   },
   "closing": {
     "statement": "We don't manage meetings. We eliminate the meetings your company never needed.",
-    "wordmark": "SYNCLESS",
-    "positioning": "AI Decision Layer for Modern Teams"
+    "wordmark": "ORBIT",
+    "positioning": "Optimized Routing for Better Intelligent Teamwork"
   }
 }

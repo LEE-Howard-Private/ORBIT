@@ -17,7 +17,7 @@
     "lines": [
       "一家 50 人的 SaaS 公司正在準備 Q4 上線。執行長只需要敲定一個日期。",
       "於是這個需求變成一場會議，而這場會議變成三天的協調。",
-      "SYNCLESS 先問一個不同的問題：這件事到底有多少需要所有人坐在同一個房間？"
+      "ORBIT 先問一個不同的問題：這件事到底有多少需要所有人坐在同一個房間？"
     ]
   },
   "before": {
@@ -143,7 +143,7 @@
         {
           "label": "決策負責人",
           "value": "產品負責人",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         }
       ],
       "post_approval": [
@@ -180,7 +180,7 @@
       "code": "01",
       "name": "AI 直接處理",
       "tagline": "不需要任何人回答",
-      "description": "SYNCLESS 直接從既有系統取得答案並記錄下來。",
+      "description": "ORBIT 直接從既有系統取得答案並記錄下來。",
       "rejectedBecause": "有兩項輸入 — 最早可行的上線日期、客戶衝突確認 — 需要有具名的人負責背書。",
       "signals": [
         {
@@ -207,7 +207,7 @@
       "code": "02",
       "name": "非同步優先",
       "tagline": "收集、彙整、決策",
-      "description": "SYNCLESS 向三位負責人提出針對性提問，彙整回覆後草擬決策。",
+      "description": "ORBIT 向三位負責人提出針對性提問，彙整回覆後草擬決策。",
       "selectedBecause": "資訊充足度 82%，會議必要性僅 38% — 答案已經存在，需要的是收集而不是辯論。",
       "signals": [
         {
@@ -378,7 +378,7 @@
   },
   "closing": {
     "statement": "我們不管理會議。我們消滅那些你的公司從來不需要的會議。",
-    "wordmark": "SYNCLESS",
-    "positioning": "為現代團隊打造的 AI 決策層"
+    "wordmark": "ORBIT",
+    "positioning": "Optimized Routing for Better Intelligent Teamwork"
   }
 }

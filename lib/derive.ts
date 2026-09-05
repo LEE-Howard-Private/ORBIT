@@ -29,13 +29,13 @@ const ROUTE_META: Record<RouteId, { code: string; name: string; tagline: string;
     code: "01",
     name: "AI HANDLES IT",
     tagline: "No human input required",
-    description: "SYNCLESS answers directly from existing systems and logs the decision.",
+    description: "ORBIT answers directly from existing systems and logs the decision.",
     },
   async_first: {
     code: "02",
     name: "ASYNC FIRST",
     tagline: "Collect, synthesize, decide",
-    description: "SYNCLESS asks the owners directly, synthesizes the answers and drafts the decision.",
+    description: "ORBIT asks the owners directly, synthesizes the answers and drafts the decision.",
   },
   meeting: {
     code: "03",
@@ -142,7 +142,7 @@ export function buildScenarioFromAnalysis(request: string, a: LiveAnalysis): Sce
     }
 
     if (selected) {
-      base.selectedBecause = `Necessity ${a.necessity_score}% with ${a.information_sufficiency}% information sufficiency — SYNCLESS routed this request here.`;
+      base.selectedBecause = `Necessity ${a.necessity_score}% with ${a.information_sufficiency}% information sufficiency — ORBIT routed this request here.`;
     } else {
       base.rejectedBecause =
         id === "meeting"
@@ -184,7 +184,7 @@ export function buildScenarioFromAnalysis(request: string, a: LiveAnalysis): Sce
       lines: [
         "Every request becomes a calendar negotiation before anyone decides anything.",
         `${beforeParticipants} people. ${beforeDuration} minutes. ${ntd(beforeCost)} of synchronous time.`,
-        "SYNCLESS routes the request instead of scheduling it.",
+        "ORBIT routes the request instead of scheduling it.",
       ],
     },
     analysis: {
@@ -252,7 +252,7 @@ export function buildScenarioFromAnalysis(request: string, a: LiveAnalysis): Sce
     },
     closing: {
       statement: "We don't manage meetings. We eliminate the meetings your company never needed.",
-      wordmark: "SYNCLESS",
+      wordmark: "ORBIT",
       positioning: "AI Decision Layer for Modern Teams",
     },
   };

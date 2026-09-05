@@ -17,7 +17,7 @@
     "lines": [
       "有些決策真的需要一個房間 — 而一個決策層必須有能力這樣判斷。",
       "營收、產品品質、客戶承諾與工程產能，四個方向互相拉扯。",
-      "SYNCLESS 不會迴避這場會議。它會把會議縮到對的尺寸，並且準備好再進去。"
+      "ORBIT 不會迴避這場會議。它會把會議縮到對的尺寸，並且準備好再進去。"
     ]
   },
   "before": {
@@ -86,7 +86,7 @@
       "業務、工程與財務給出直接對立的結論，非同步收集無法調和。",
       "利害關係衝突高：營收、產品品質、客戶承諾與工程產能彼此互斥。",
       "這個決策在本會計年度內不可逆，因此同步討論的門檻更高。",
-      "SYNCLESS 仍把會議縮小：4 位決策者、30 分鐘，且所有立場已事先收齊。"
+      "ORBIT 仍把會議縮小：4 位決策者、30 分鐘，且所有立場已事先收齊。"
     ],
     "estimated_cost": 21600,
     "cost_basis": "12 人 × 2 小時 × NT$900 混合時薪 = NT$21,600",
@@ -120,7 +120,7 @@
     "decision": {
       "title": "現在上線 vs 延後三個月",
       "status": "需要召開會議",
-      "recommendation": "這一個需要一個房間。業務、工程與財務從同一批證據得出互相衝突的結論，而且這個決策在本會計年度內不可逆。SYNCLESS 已把會議縮到 4 位決策者、30 分鐘，並事先收齊三方立場，讓時間花在決策而不是簡報。",
+      "recommendation": "這一個需要一個房間。業務、工程與財務從同一批證據得出互相衝突的結論，而且這個決策在本會計年度內不可逆。ORBIT 已把會議縮到 4 位決策者、30 分鐘，並事先收齊三方立場，讓時間花在決策而不是簡報。",
       "launch_date": "",
       "product_status": "",
       "constraint": "本會計年度內不可逆",
@@ -129,27 +129,27 @@
         {
           "label": "需要做的決策",
           "value": "現在上線 vs 延後三個月",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "參與者",
           "value": "執行長、產品、工程、業務",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "會議長度",
           "value": "30 分鐘",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "衝突所在",
           "value": "營收 vs 產品品質",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         },
         {
           "label": "決策負責人",
           "value": "執行長",
-          "source": "SYNCLESS"
+          "source": "ORBIT"
         }
       ],
       "post_approval": [
@@ -210,7 +210,7 @@
       "code": "01",
       "name": "AI 直接處理",
       "tagline": "不需要任何人回答",
-      "description": "SYNCLESS 直接從既有系統取得答案並記錄下來。",
+      "description": "ORBIT 直接從既有系統取得答案並記錄下來。",
       "rejectedBecause": "這是對風險胃納的判斷，不是可以從系統查到的事實。",
       "signals": [
         {
@@ -237,7 +237,7 @@
       "code": "02",
       "name": "非同步優先",
       "tagline": "收集、彙整、決策",
-      "description": "SYNCLESS 向負責人提出針對性提問，彙整回覆後草擬決策。",
+      "description": "ORBIT 向負責人提出針對性提問，彙整回覆後草擬決策。",
       "rejectedBecause": "已先執行非同步收集，結果回傳一個未解衝突 — 業務、工程與財務無法在書面上調和。",
       "signals": [
         {
@@ -393,7 +393,7 @@
     "savingLabel": "預估節省",
     "saving": "NT$19,800",
     "savingAmount": 19800,
-    "footnote": "SYNCLESS 不反對開會。它反對的是不必要的同步。",
+    "footnote": "ORBIT 不反對開會。它反對的是不必要的同步。",
     "transform": {
       "from": "120 分鐘",
       "to": "30 分鐘"
@@ -401,7 +401,7 @@
   },
   "closing": {
     "statement": "我們不管理會議。我們消滅那些你的公司從來不需要的會議。",
-    "wordmark": "SYNCLESS",
-    "positioning": "為現代團隊打造的 AI 決策層"
+    "wordmark": "ORBIT",
+    "positioning": "Optimized Routing for Better Intelligent Teamwork"
   }
 }

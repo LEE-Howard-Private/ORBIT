@@ -36,7 +36,7 @@ export function FloatingNav({
           className="flex items-center gap-2.5 text-fg2 transition-colors duration-150 hover:text-fg"
         >
           <Mark className="h-[18px] w-[18px]" />
-          <span className="text-[12.5px] font-medium tracking-[0.24em]">SYNCLESS</span>
+          <span className="text-[12.5px] font-medium tracking-[0.24em]">ORBIT</span>
         </button>
 
         <div className="flex items-center gap-1.5">

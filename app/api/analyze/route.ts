@@ -5,7 +5,7 @@ import { decide, meetingCost, type Factors } from "@/lib/engine";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SYSTEM_PROMPT = `You are the extraction layer of SYNCLESS, an AI decision layer for companies.
+const SYSTEM_PROMPT = `You are the extraction layer of ORBIT, an AI decision layer for companies.
 
 You do NOT choose the coordination route. A deterministic scoring model does that.
 Your job is to read a work or meeting request and extract structured, defensible attributes.
@@ -54,7 +54,7 @@ Reply with JSON only, matching exactly this shape:
     "recommendation": "2-3 sentences stating the recommended decision",
     "owner": "The accountable role",
     "fields": [{"label": "Short label", "value": "Short value", "source": "Which role supplied it"}],
-    "post_approval": ["3-4 concrete things SYNCLESS does the moment the brief is approved"]
+    "post_approval": ["3-4 concrete things ORBIT does the moment the brief is approved"]
   },
   "confidence": 0-100 confidence in the DECISION itself once the answers are in,
   "synthesis": "One sentence summarizing what the collected answers established",
@@ -127,12 +127,12 @@ function normalize(parsed: any): LiveAnalysis {
     .map((f: any) => ({
       label: String(f.label ?? "Field"),
       value: String(f.value ?? "—"),
-      source: String(f.source ?? "SYNCLESS"),
+      source: String(f.source ?? "ORBIT"),
     }));
 
   const owner = String(parsed?.decision?.owner ?? "Requester");
   if (!fields.some((f: { label: string }) => f.label.toLowerCase() === "owner")) {
-    fields.push({ label: "Owner", value: owner, source: "SYNCLESS" });
+    fields.push({ label: "Owner", value: owner, source: "ORBIT" });
   }
 
   return {
