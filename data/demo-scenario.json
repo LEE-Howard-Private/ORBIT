@@ -167,7 +167,12 @@
     "meeting": {
       "participants": 10,
       "minutes": 90
-    }
+    },
+    "constraints": [
+      "The Q4 campaign calendar is already locked",
+      "Enterprise contracts require advance notice",
+      "Release milestones are tracked to a fixed date"
+    ]
   },
   "routes": [
     {

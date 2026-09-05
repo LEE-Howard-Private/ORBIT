@@ -39,6 +39,8 @@ export interface UIStrings {
     realtime: string;
     conflict: string;
     basedOn: string;
+    constraints: string;
+    gaps: string;
     cost: string;
     costBasis: string;
   };
@@ -125,6 +127,8 @@ export interface UIStrings {
     stakeholders: (n: number) => string;
     noStakeholders: string;
     checkingInfo: string;
+    constraints: (n: number) => string;
+    gaps: (n: number) => string;
     infoAvailable: string;
     evidenceFound: string;
     sources: (n: number) => string;
@@ -158,6 +162,14 @@ export interface UIStrings {
     restart: string;
   };
   screens: string[];
+  playback: {
+    title: string;
+    states: Record<string, string>;
+    blurbs: Record<string, string>;
+    restart: string;
+    fullWalkthrough: string;
+    playMeeting: string;
+  };
 }
 
 const en: UIStrings = {
@@ -197,8 +209,8 @@ const en: UIStrings = {
     steps: [
       "Understanding the request",
       "Identifying stakeholders",
-      "Checking available information",
-      "Assessing decision complexity",
+      "Surfacing constraints",
+      "Locating information gaps",
       "Choosing coordination mode",
     ],
     why: "Why this route",
@@ -209,6 +221,8 @@ const en: UIStrings = {
     realtime: "Real-time discussion",
     conflict: "Stakeholder conflict",
     basedOn: "Based on",
+    constraints: "Constraints",
+    gaps: "Information gaps",
     cost: "Coordination cost of the meeting as requested",
     costBasis: "How that is calculated",
   },
@@ -304,6 +318,11 @@ const en: UIStrings = {
     stakeholders: (n) => `${n} stakeholders have to contribute to this one.`,
     noStakeholders: "Nobody has to contribute. This is a lookup, not a decision.",
     checkingInfo: "Now I'm checking whether what this needs already exists, or has to be collected.",
+    constraints: (n) => `${n} constraints this decision has to live inside.`,
+    gaps: (n) =>
+      n === 0
+        ? "Nothing is unresolved — the answer is already in the systems."
+        : `${n} questions remain unresolved.`,
     infoAvailable: "Information available",
     evidenceFound: "Sources checked",
     sources: (n) => `${n}`,
@@ -345,6 +364,36 @@ const en: UIStrings = {
     restart: "Restart",
   },
   screens: ["Request", "Analysis", "Route", "Coordination", "Decision", "Result"],
+  playback: {
+    title: "Decision Playback",
+    states: {
+      request: "Request",
+      understand: "Understand",
+      stakeholders: "Stakeholders",
+      constraints: "Constraints",
+      gaps: "Information gaps",
+      route: "Route",
+      questions: "Questions",
+      responses: "Responses",
+      decision: "Decision",
+      impact: "Impact",
+    },
+    blurbs: {
+      request: "A request arrives the way it always does — as a meeting.",
+      understand: "Identifying the actual decision behind this request.",
+      stakeholders: "Working out who has to contribute.",
+      constraints: "Surfacing the constraints the decision has to live inside.",
+      gaps: "Finding what is still unresolved.",
+      route: "Choosing the lowest-cost way to close it.",
+      questions: "Turning the decision into independent questions.",
+      responses: "Collecting the answers.",
+      decision: "Synthesizing the decision.",
+      impact: "What it saved.",
+    },
+    restart: "Restart playback",
+    fullWalkthrough: "Play the full walkthrough",
+    playMeeting: "Play the meeting scenario",
+  },
 };
 
 const zh: UIStrings = {
@@ -381,7 +430,7 @@ const zh: UIStrings = {
   },
   analysis: {
     eyebrow: "分析",
-    steps: ["理解這個需求", "辨識關係人", "盤點既有資訊", "評估決策複雜度", "選擇協調方式"],
+    steps: ["理解這個需求", "辨識關係人", "浮現限制條件", "找出資訊缺口", "選擇協調方式"],
     why: "為什麼是這條路徑",
     whyClose: "收起判斷依據",
     necessity: "會議必要性",
@@ -390,6 +439,8 @@ const zh: UIStrings = {
     realtime: "即時討論需求",
     conflict: "利害關係衝突",
     basedOn: "依據",
+    constraints: "限制條件",
+    gaps: "資訊缺口",
     cost: "照原樣開會的協調成本",
     costBasis: "計算方式",
   },
@@ -485,6 +536,8 @@ const zh: UIStrings = {
     stakeholders: (n) => `這件事需要 ${n} 位關係人提供輸入。`,
     noStakeholders: "沒有人需要提供輸入。這是查詢，不是決策。",
     checkingInfo: "接著我確認需要的資訊是已經存在，還是必須去收集。",
+    constraints: (n) => `這個決策必須容納 ${n} 個限制條件。`,
+    gaps: (n) => (n === 0 ? "沒有懸而未決的部分 —— 答案已經在系統裡。" : `還有 ${n} 個問題沒有答案。`),
     infoAvailable: "資訊充足度",
     evidenceFound: "查核來源",
     sources: (n) => `${n} 個`,
@@ -523,6 +576,36 @@ const zh: UIStrings = {
     restart: "重新開始",
   },
   screens: ["需求", "分析", "路徑", "協調", "決策", "成果"],
+  playback: {
+    title: "決策回放",
+    states: {
+      request: "需求",
+      understand: "理解",
+      stakeholders: "關係人",
+      constraints: "限制條件",
+      gaps: "資訊缺口",
+      route: "路徑",
+      questions: "提問",
+      responses: "回覆",
+      decision: "決策",
+      impact: "影響",
+    },
+    blurbs: {
+      request: "需求進來的方式一如往常 —— 一場會議。",
+      understand: "辨識這個需求背後真正要決定的事。",
+      stakeholders: "釐清誰必須提供輸入。",
+      constraints: "浮現這個決策必須容納的限制條件。",
+      gaps: "找出還沒有答案的部分。",
+      route: "選出能完成決策、成本最低的方式。",
+      questions: "把決策拆成彼此獨立的提問。",
+      responses: "收集回覆。",
+      decision: "彙整成決策。",
+      impact: "省下了什麼。",
+    },
+    restart: "重新播放",
+    fullWalkthrough: "播放完整版導覽",
+    playMeeting: "播放需要開會的情境",
+  },
 };
 
 export const STRINGS: Record<Lang, UIStrings> = { en, zh };

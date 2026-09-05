@@ -156,7 +156,11 @@
     "meeting": {
       "participants": 6,
       "minutes": 30
-    }
+    },
+    "constraints": [
+      "The figure must match the system of record",
+      "The period is closed — August 2026"
+    ]
   },
   "routes": [
     {

@@ -167,7 +167,12 @@
     "meeting": {
       "participants": 10,
       "minutes": 90
-    }
+    },
+    "constraints": [
+      "Q4 campaign 檔期已經鎖定",
+      "企業客戶合約要求事前通知",
+      "版本里程碑已綁定固定日期"
+    ]
   },
   "routes": [
     {

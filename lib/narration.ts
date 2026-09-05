@@ -62,8 +62,15 @@ export function narrate(
   );
   beats.push(
     at("analysis", 2, {
-      id: "information",
-      text: n.checkingInfo,
+      id: "constraints",
+      text: n.constraints(a.constraints?.length ?? 0),
+      items: a.constraints,
+    })
+  );
+  beats.push(
+    at("analysis", 3, {
+      id: "gaps",
+      text: n.gaps(a.questions.length),
       metrics: [
         { label: n.infoAvailable, value: `${a.information_sufficiency}%` },
         { label: n.evidenceFound, value: n.sources(a.information_sources?.length ?? count) },
@@ -71,7 +78,7 @@ export function narrate(
     })
   );
   beats.push(
-    at("analysis", 3, {
+    at("analysis", 4, {
       id: "realtime",
       text: contributors > 0 ? n.realtime : n.realtimeNone,
       emphasis: true,

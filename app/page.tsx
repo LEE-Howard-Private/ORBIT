@@ -7,6 +7,7 @@ import { CommandPalette, type Command } from "@/components/shell/CommandPalette"
 import { FloatingNav } from "@/components/shell/FloatingNav";
 import { Narrator } from "@/components/shell/Narrator";
 import { Rail } from "@/components/shell/Rail";
+import { StageIndicator } from "@/components/shell/StageIndicator";
 import { AnalysisScreen } from "@/components/screens/AnalysisScreen";
 import { AsyncScreen } from "@/components/screens/AsyncScreen";
 import { BeforeScreen } from "@/components/screens/BeforeScreen";
@@ -26,9 +27,10 @@ import {
   getScenarios,
   matchScenario,
 } from "@/lib/scenario";
-import { buildScript, scriptDurationMs } from "@/lib/script";
+import { buildPlayback } from "@/lib/playback";
+import { buildScript } from "@/lib/script";
 import { RAIL_STAGES, SEQUENCE, railIndex, restingStep } from "@/lib/stages";
-import type { Scenario, StageId } from "@/lib/types";
+import type { Scenario, ScriptStep, StageId } from "@/lib/types";
 
 export default function Page() {
   const [lang, setLang] = useState<Lang>("en");
@@ -40,6 +42,7 @@ export default function Page() {
   const [stage, setStage] = useState<StageId>("request");
   const [step, setStep] = useState(0);
 
+  const [beats, setBeats] = useState<ScriptStep[]>([]);
   const [cursor, setCursor] = useState(-1);
   const [endIndex, setEndIndex] = useState(-1);
   const [speed, setSpeed] = useState(1);
@@ -51,13 +54,12 @@ export default function Page() {
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [narratorOpen, setNarratorOpen] = useState(true);
 
-  const script = useMemo(() => buildScript(scenario), [scenario]);
-  const totalMs = useMemo(() => scriptDurationMs(script), [script]);
+  const totalMs = useMemo(() => beats.reduce((sum, b) => sum + b.hold, 0), [beats]);
   const cumulative = useMemo(() => {
     const out = [0];
-    script.forEach((beat, i) => out.push(out[i] + beat.hold));
+    beats.forEach((beat, i) => out.push(out[i] + beat.hold));
     return out;
-  }, [script]);
+  }, [beats]);
 
   const playing = cursor >= 0;
   const playingRef = useRef(playing);
@@ -107,13 +109,13 @@ export default function Page() {
   /* ---------- the autoplay engine ---------- */
 
   useEffect(() => {
-    if (cursor < 0 || cursor >= script.length) return;
-    const beat = script[cursor];
+    if (cursor < 0 || cursor >= beats.length) return;
+    const beat = beats[cursor];
     setStage(beat.stage);
     setStep(beat.step);
 
     const id = setTimeout(() => {
-      if (cursor >= endIndex || cursor + 1 >= script.length) {
+      if (cursor >= endIndex || cursor + 1 >= beats.length) {
         setCursor(-1);
         setEndIndex(-1);
       } else {
@@ -122,16 +124,26 @@ export default function Page() {
     }, Math.max(200, beat.hold / speed));
 
     return () => clearTimeout(id);
-  }, [cursor, endIndex, script, speed]);
+  }, [cursor, endIndex, beats, speed]);
 
-  const playFullDemo = useCallback(() => {
+  const run = useCallback((timeline: ScriptStep[], source: Scenario) => {
     setError(null);
     setSpeed(1);
-    setScenario(demo);
-    setInput(demo.request);
+    setScenario(source);
+    setInput(source.request);
+    setBeats(timeline);
     setCursor(0);
-    setEndIndex(buildScript(demo).length - 1);
-  }, [demo]);
+    setEndIndex(timeline.length - 1);
+  }, []);
+
+  /** The 30-second film. This is what "Play demo" runs. */
+  const playDemo = useCallback(
+    (source: Scenario = demo) => run(buildPlayback(source), source),
+    [demo, run]
+  );
+
+  /** The long-form walkthrough, kept for anyone who wants the full narrative. */
+  const playFullWalkthrough = useCallback(() => run(buildScript(demo), demo), [demo, run]);
 
   const stop = useCallback(() => {
     setCursor(-1);
@@ -162,6 +174,7 @@ export default function Page() {
   /** Plays only the request → analysis stretch, briskly, then rests. */
   const playAnalysis = useCallback((source: Scenario) => {
     const s = buildScript(source);
+    setBeats(s);
     setSpeed(2.1);
     setCursor(s.findIndex((b) => b.stage === "request" && b.step === 2));
     setEndIndex(s.findIndex((b) => b.stage === "analysis" && b.step === 5));
@@ -238,7 +251,7 @@ export default function Page() {
       if (target && ["INPUT", "TEXTAREA"].includes(target.tagName)) return;
       if (e.code === "Space") {
         e.preventDefault();
-        playingRef.current ? stop() : playFullDemo();
+        playingRef.current ? stop() : playDemo();
       } else if (e.code === "ArrowRight") {
         goNext();
       } else if (e.code === "ArrowLeft") {
@@ -247,7 +260,7 @@ export default function Page() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [goNext, goPrev, playFullDemo, stop]);
+  }, [goNext, goPrev, playDemo, stop]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -296,7 +309,21 @@ export default function Page() {
 
   const commands: Command[] = useMemo(() => {
     const list: Command[] = [
-      { id: "play", group: ui.palette.actions, label: ui.palette.playDemo, hint: "Space", icon: "play", run: playFullDemo },
+      { id: "play", group: ui.palette.actions, label: ui.palette.playDemo, hint: "Space", icon: "play", run: () => playDemo() },
+      {
+        id: "play-meeting",
+        group: ui.palette.actions,
+        label: ui.playback.playMeeting,
+        icon: "play",
+        run: () => playDemo(scenarios[2]),
+      },
+      {
+        id: "play-full",
+        group: ui.palette.actions,
+        label: ui.playback.fullWalkthrough,
+        icon: "play",
+        run: playFullWalkthrough,
+      },
       { id: "new", group: ui.palette.actions, label: ui.palette.newDecision, icon: "spark", run: restart },
       {
         id: "lang",
@@ -326,15 +353,17 @@ export default function Page() {
       })
     );
     return list;
-  }, [ui, scenarios, lang, playFullDemo, restart, changeLang, openScenario, goToStage]);
+  }, [ui, scenarios, lang, playDemo, playFullWalkthrough, restart, changeLang, openScenario, goToStage]);
 
   /* ---------- atmosphere ---------- */
 
   const atmosphere =
     stage === "route" && step >= 3 ? 0.4 : stage === "closing" ? 0.75 : playing ? 0.85 : 1;
 
-  const progress = playing ? (cumulative[cursor + 1] / totalMs) * 100 : 0;
-  const progressMs = playing ? Math.max(200, script[cursor].hold / speed) : 0;
+  const progress = playing && totalMs > 0 ? (cumulative[cursor + 1] / totalMs) * 100 : 0;
+  const progressMs = playing ? Math.max(200, beats[cursor].hold / speed) : 0;
+  const current = playing ? beats[cursor] : undefined;
+  const isPlayback = Boolean(current?.state);
 
   return (
     <LangProvider lang={lang}>
@@ -362,11 +391,19 @@ export default function Page() {
           lang={lang}
           onLang={changeLang}
           playing={playing}
-          onPlay={playFullDemo}
+          onPlay={() => playDemo()}
           onStop={stop}
           onHome={home}
           onPalette={() => setPaletteOpen(true)}
           dimmed={playing}
+        />
+
+        <StageIndicator
+          index={cursor < 0 ? 0 : cursor}
+          total={beats.length}
+          state={current?.state}
+          visible={isPlayback}
+          progress={progress}
         />
 
         <main key={stage} className="with-narrator relative z-10 animate-sweepIn">

@@ -156,7 +156,11 @@
     "meeting": {
       "participants": 6,
       "minutes": 30
-    }
+    },
+    "constraints": [
+      "數字必須與系統紀錄一致",
+      "期間已結算 — 2026 年 8 月"
+    ]
   },
   "routes": [
     {

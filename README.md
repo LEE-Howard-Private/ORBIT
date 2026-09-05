@@ -33,6 +33,31 @@ The MEETING case is the one that proves the point: SYNCLESS runs async collectio
 Sales and Engineering reached opposing conclusions from the same evidence, and escalates — sizing
 the meeting down rather than avoiding it.
 
+## Decision Playback
+
+**Play demo** runs the short film: ten named states in about 30 seconds, deterministic, with no
+network and no waiting on anything.
+
+| # | State | Holds |
+|---|---|---|
+| 01 | Request | 2s |
+| 02 | Understand | 3s |
+| 03 | Stakeholders | 3s |
+| 04 | Constraints | 3s |
+| 05 | Information gaps | 3s |
+| 06 | Route | 3.4s |
+| 07 | Questions | 3s |
+| 08 | Responses | 3s |
+| 09 | Decision | 4s |
+| 10 | Impact | 3.4s |
+
+A small indicator shows `04 / 10`, the state's name, one line about it, and a hairline of progress.
+Space or the nav button pauses; ⌘K restarts, plays the meeting scenario, or plays the long-form
+walkthrough instead.
+
+Every beat is pinned to a real position in the same stage machine the app uses by hand, so
+playback cannot show a state the product is not actually in.
+
 ## Demo recording
 
 - **Play full demo** (top-right, or the button on the home screen, or the spacebar) runs the whole

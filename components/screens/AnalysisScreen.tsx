@@ -20,11 +20,14 @@ export function AnalysisScreen({ scenario, step }: { scenario: Scenario; step: n
   const [showMath, setShowMath] = useState(false);
   const mathRef = useRef<HTMLDivElement>(null);
 
+  const constraints = a.constraints ?? [];
+  const gaps = a.questions.map((q) => `${q.role} — ${q.topic ?? q.question}`);
+
   const answers = [
     scenario.requester.role,
     `${roles.length}`,
-    `${a.information_sufficiency}%`,
-    ui.levels[a.decision_complexity ?? ""] ?? a.decision_complexity ?? "",
+    `${constraints.length}`,
+    `${gaps.length}`,
     ui.routeLabel[engineRoute],
   ];
 
@@ -75,31 +78,49 @@ export function AnalysisScreen({ scenario, step }: { scenario: Scenario; step: n
         })}
       </div>
 
-      {a.information_sources?.length ? (
-        <Reveal show={step >= 3} delay={120} className="mt-10">
-          <div className="eyebrow mb-4">{ui.analysis.basedOn}</div>
-          <div className="flex flex-wrap gap-x-8 gap-y-3">
-            {a.information_sources.map((source, i) => (
-              <Reveal key={source.label} show={step >= 3} delay={200 + i * 110}>
-                <span className="flex items-center gap-2.5 text-[13.5px] text-fg2">
-                  <span
-                    className="h-1 w-1 rounded-full"
-                    style={{
-                      background:
-                        source.status === "available"
-                          ? "var(--accent)"
-                          : source.status === "partial"
-                          ? "var(--text-3)"
-                          : "var(--text-4)",
-                    }}
-                  />
-                  {source.label}
-                </span>
-              </Reveal>
-            ))}
-          </div>
-        </Reveal>
-      ) : null}
+      <div className="mt-11 grid gap-x-14 gap-y-9 sm:grid-cols-2">
+        {constraints.length ? (
+          <Reveal show={step >= 2} delay={120}>
+            <div>
+              <div className="eyebrow mb-4">{ui.analysis.constraints}</div>
+              <ul className="space-y-2.5">
+                {constraints.map((item, i) => (
+                  <Reveal key={item} show={step >= 2} delay={200 + i * 110} y={6}>
+                    <li className="flex gap-2.5 text-[13.5px] leading-relaxed text-fg2">
+                      <span
+                        className="mt-[9px] h-px w-2.5 shrink-0"
+                        style={{ background: "var(--text-4)" }}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        ) : null}
+
+        {gaps.length ? (
+          <Reveal show={step >= 3} delay={120}>
+            <div>
+              <div className="eyebrow mb-4">{ui.analysis.gaps}</div>
+              <ul className="space-y-2.5">
+                {gaps.map((item, i) => (
+                  <Reveal key={item} show={step >= 3} delay={200 + i * 110} y={6}>
+                    <li className="flex gap-2.5 text-[13.5px] leading-relaxed text-fg2">
+                      <span
+                        className="mt-[7px] h-1 w-1 shrink-0 rounded-full"
+                        style={{ background: "var(--accent)" }}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        ) : null}
+      </div>
 
       <Reveal show={step >= 4} delay={120} className="mt-10">
         <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">

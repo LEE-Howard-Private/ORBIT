@@ -53,6 +53,8 @@ export interface Analysis {
   information_sufficiency: number;
   reasoning: string[];
   estimated_cost: number;
+  /** Known constraints the decision has to live inside. */
+  constraints?: string[];
   /** The extracted factors the decision engine scores. */
   factors?: Factors;
   /** The meeting that was requested, for the transparent cost calculation. */
@@ -176,4 +178,6 @@ export interface ScriptStep {
   step: number;
   /** Milliseconds this beat holds before the next one fires, at 1x speed. */
   hold: number;
+  /** Set on Decision Playback beats: which named state this is. */
+  state?: string;
 }

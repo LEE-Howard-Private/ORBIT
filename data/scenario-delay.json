@@ -197,7 +197,12 @@
     "meeting": {
       "participants": 12,
       "minutes": 120
-    }
+    },
+    "constraints": [
+      "The call is irreversible inside this fiscal year",
+      "Two enterprise contracts reference the announced date",
+      "Clearing the known defects needs 6–8 weeks of capacity"
+    ]
   },
   "routes": [
     {
